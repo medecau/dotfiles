@@ -1,11 +1,15 @@
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 
-# homebrew paths
+# paths
+
+export PYENV_ROOT="$HOME/.pyenv"
+
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
 export PATH="$HOME/bin:$PATH"
 
 
@@ -148,6 +152,7 @@ alias saymyname="say \"you are $(whoami)\""
 # hooks
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(pyenv init -)"
 
 
 if [[ -z "$TMUX" ]]
