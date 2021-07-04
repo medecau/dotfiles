@@ -104,8 +104,9 @@ source $ZSH/oh-my-zsh.sh
 #
 
 
-alias ls="ls -G"
-alias ll="ls -hal"
+alias ls="ls -Gh"
+alias la="ls -a"
+alias ll="la -l"
 alias mkdir="mkdir -pv"
 
 # sublime apps
@@ -115,6 +116,11 @@ alias smerge="/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge
 # lua game engines
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
+
+# short names
+alias t="tmux"
+alias g="git"
+
 
 # ssh
 alias s="autossh -M 0"
