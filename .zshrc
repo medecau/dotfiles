@@ -2,13 +2,23 @@
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 
+
+# opt out of tracking
+export DO_NOT_TRACK=1
+export HOMEBREW_NO_ANALYTICS=1  # Homebrew
+export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
+export GATSBY_TELEMETRY_DISABLED=1  # Gatsby
+export STNOUPGRADE=1  # Syncthing
+export SAM_CLI_TELEMETRY=0  # AWS Serverless Application Model
+export AZURE_CORE_COLLECT_TELEMETRY=0  # Azure CLI
+
+
 # history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 
 # paths
-
 export PYENV_ROOT="$HOME/.pyenv"
 
 export PATH="/usr/local/bin:$PATH"
@@ -23,22 +33,23 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export GOPATH="$HOME/code/gopath"
 
-export EDITOR="subl"
+
+export PATH=$PATH:/Library/TeX/texbin
 
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
 
-# Set list of themes to load
-# Setting this variable when ZSH_THEME=random
-# cause zsh load theme from this variable instead of
-# looking in ~/.oh-my-zsh/themes/
-# An empty array have no effect
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
@@ -49,7 +60,10 @@ ZSH_THEME="robbyrussell"
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
-DISABLE_AUTO_UPDATE="true"
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=6
@@ -73,17 +87,21 @@ export UPDATE_ZSH_DAYS=6
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=( git brew )
+plugins=(git brew)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,14 +113,17 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='subl'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+# hooks
+eval "$(direnv hook zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -119,6 +140,11 @@ alias la="ls -a"
 alias ll="la -l"
 alias mkdir="mkdir -pv"
 
+# code
+alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
+alias codeconfig="$EDITOR $HOME/Library/Application Support/Code - Insiders/User/"
+
+
 # sublime apps
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
 alias smerge="/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge"
@@ -132,27 +158,25 @@ alias t="tmux"
 alias g="git"
 
 
-# ssh
+# SSH
 alias s="autossh -M 0"
 alias sa="ssh-add"
 alias scp="scp -C"
 
-# python virtualenv
+# Python virtualenv
 alias ve="virtualenv"
-alias vei="ve ve"  # init
-alias vea="source ve/bin/activate"  # activate
+alias vei="ve .venv"  # init
+alias vea="source .venv/bin/activate"  # activate
 alias ved="deactivate"  # deactivate
 
-# C compiler
+# C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
 alias cf="clang-format -i" # format in-place
 
-# zsh utils
+# ZSH utilities
 alias zshconfig="$EDITOR ~/.zshrc"
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
 alias reload="source ~/.zshrc"
-
-alias saymyname="say \"you are $(whoami)\""
 
 
 # hooks
@@ -161,7 +185,8 @@ eval "$(direnv hook zsh)"
 eval "$(pyenv init -)"
 
 
-if [[ -z "$TMUX" ]]
+# enter tmux
+if [ -z "$TMUX" ]
 then
     tmux attach || tmux new
 fi
