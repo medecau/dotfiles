@@ -1,0 +1,52 @@
+{
+    "editor.largeFileOptimizations": false,
+    "python.insidersChannel": "weekly",
+    "editor.inlineSuggest.enabled": true,
+    "workbench.colorTheme": "Monokai",
+    "editor.suggestSelection": "first",
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "gitlens.defaultDateFormat": "DD/MM/YYYY HH:mm",
+    "gitlens.defaultDateShortFormat": "DD/MM/YYYY",
+    "gitlens.defaultTimeFormat": "HH:mm",
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "python.envFile": "${workspaceFolder}/.envrc",
+    "python.formatting.provider": "black",
+    "python.languageServer": "Pylance",
+    "semgrep.languages": [
+        "c",
+        "go",
+        "java",
+        "javascript",
+        "javascriptreact",
+        "json",
+        "ocaml",
+        "php",
+        "python",
+        "ruby",
+        "typescript",
+        "typescriptreact"
+    ],
+    "python.linting.prospectorArgs": [
+        "--no-autodetect",
+        "--strictness",
+        "low",
+    ],
+    "python.linting.prospectorEnabled": true,
+    "python.testing.pytestEnabled": true,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "python.terminal.activateEnvInCurrentTerminal": true,
+    "python.pythonPath": "${workspaceFolder}/.venv/bin/python",
+    "editor.formatOnSave": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "vsintellicode.features.python.deepLearning": "enabled",
+    "liveshare.focusBehavior": "prompt",
+    "jupyter.askForKernelRestart": false,
+}
