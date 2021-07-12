@@ -113,6 +113,7 @@ alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 # short names
 alias t="tmux"
 alias g="git"
+alias inv="invoke --config=.tasks"
 
 # SSH
 alias s="autossh -M 0"
@@ -136,6 +137,7 @@ alias reload="source ~/.zshrc"
 
 # dotfiles
 alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
+alias dfs="dotfiles"
 
 
 # hooks
