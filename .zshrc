@@ -97,7 +97,7 @@ alias ll="la -l"
 alias mkdir="mkdir -pv"
 
 
-# code
+# vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
 alias codeconfig="$EDITOR $HOME/Library/Application Support/Code - Insiders/User/"
 
