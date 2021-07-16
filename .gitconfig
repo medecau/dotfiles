@@ -8,3 +8,11 @@
 	email = medecau@gmail.com
 [init]
 	defaultBranch = main
+[alias]
+	br = branch
+	cm = commit
+	
+	co = checkout
+	new = "checkout -b"
+
+	update = "fetch --all --tags --prune"
