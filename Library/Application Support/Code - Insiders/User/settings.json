@@ -5,9 +5,6 @@
     "workbench.colorTheme": "Witch Hazel Hypercolor",
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter-notebook"
-    },
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
@@ -60,4 +57,8 @@
     "workbench.preferredHighContrastColorTheme": "Witch Hazel Hypercolor",
     "workbench.preferredLightColorTheme": "Witch Hazel",
     "jupyter.interactiveWindowMode": "perFile",
+    "editor.fontSize": 14,
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
 }
