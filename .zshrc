@@ -113,6 +113,8 @@ alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 # short names
 alias t="tmux"
 alias g="git"
+
+alias dk="docker"
 alias inv="invoke --config=.tasks"
 
 # SSH
