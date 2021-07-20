@@ -84,10 +84,27 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 
-alias ls="ls -Gh"
-alias la="ls -a"
-alias ll="la -l"
-alias mkdir="mkdir -pv"
+# global
+
+alias -g L=" | less"
+alias -g G=" | grep"
+alias -g F=" | fzf"
+
+# basic
+
+alias cdb="cd $OLDPWD"
+alias ls="ls -Gh"                  # with colors and human file sizes when necessary
+alias la="ls -a"                   # list with hidden files
+alias ll="la -l"                   # list with more info - Long
+alias lh="ls -d .*"                # only the hidden files
+alias mkdir="mkdir -pv"            # create directory and any missing parent directories
+alias pbclear="pbcopy < /dev/null" # clear pasteboard
+
+alias g="git" # git alias should go in ~/.gitconfig
+alias t="tmux"
+
+alias dk="docker"
+alias inv="invoke --config=.tasks" # invoke for user tasks
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
@@ -101,17 +118,10 @@ alias smerge="/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 
-# short names
-alias t="tmux"
-alias g="git"
-
-alias dk="docker"
-alias inv="invoke --config=.tasks"
-
 # SSH
 alias s="autossh -M 0"
 alias sa="ssh-add"
-alias scp="scp -C"
+alias scp="scp -C" # scp with compression
 
 # Python virtualenv
 alias ve="virtualenv"
@@ -124,9 +134,9 @@ alias cc="cc -Wall -Werror" # all warnings + warnings are errors
 alias cf="clang-format -i"  # format in-place
 
 # ZSH utilities
-alias zshconfig="$EDITOR ~/.zshrc"
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"
-alias reload="source ~/.zshrc"
+alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
+alias reload="source ~/.zshrc"       # reload config
 
 # dotfiles
 alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
