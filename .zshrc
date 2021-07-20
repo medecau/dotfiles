@@ -2,21 +2,18 @@
 export LANG=en_US.UTF-8
 export LC_ALL=$LANG
 
-
 # opt out of tracking
 export DO_NOT_TRACK=1
-export HOMEBREW_NO_ANALYTICS=1  # Homebrew
+export HOMEBREW_NO_ANALYTICS=1        # Homebrew
 export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
-export GATSBY_TELEMETRY_DISABLED=1  # Gatsby
-export STNOUPGRADE=1  # Syncthing
-export SAM_CLI_TELEMETRY=0  # AWS Serverless Application Model
-export AZURE_CORE_COLLECT_TELEMETRY=0  # Azure CLI
-
+export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
+export STNOUPGRADE=1                  # Syncthing
+export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
+export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
 
 # history
 export HISTSIZE=1000000
 export SAVEHIST=1000000
-
 
 # paths
 export PYENV_ROOT="$HOME/.pyenv"
@@ -28,14 +25,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 export PATH="$HOME/bin:$PATH"
 
-
 # GO
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export GOPATH="$HOME/code/gopath"
 
-
 export PATH=$PATH:/Library/TeX/texbin
-
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -90,12 +84,10 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # For a full list of active aliases, run `alias`.
 #
 
-
 alias ls="ls -Gh"
 alias la="ls -a"
 alias ll="la -l"
 alias mkdir="mkdir -pv"
-
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
@@ -108,7 +100,6 @@ alias smerge="/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge
 # lua game engines
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
-
 
 # short names
 alias t="tmux"
@@ -124,13 +115,13 @@ alias scp="scp -C"
 
 # Python virtualenv
 alias ve="virtualenv"
-alias vei="ve .venv"  # init
-alias vea="source .venv/bin/activate"  # activate
-alias ved="deactivate"  # deactivate
+alias vei="ve .venv"                  # init
+alias vea="source .venv/bin/activate" # activate
+alias ved="deactivate"                # deactivate
 
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
-alias cf="clang-format -i" # format in-place
+alias cf="clang-format -i"  # format in-place
 
 # ZSH utilities
 alias zshconfig="$EDITOR ~/.zshrc"
@@ -141,15 +132,12 @@ alias reload="source ~/.zshrc"
 alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
 alias dfs="dotfiles"
 
-
 # hooks
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(pyenv init -)"
 
-
 # enter tmux
-if [ -z "$TMUX" ]
-then
-    tmux attach || tmux new
+if [ -z "$TMUX" ]; then
+  tmux attach || tmux new
 fi
