@@ -16,13 +16,16 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # paths
-export PYENV_ROOT="$HOME/.pyenv"
-
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 eval "$(brew shellenv)" # homebrew
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
+
+# user
 export PATH="$HOME/bin:$PATH"
 
 # GO
