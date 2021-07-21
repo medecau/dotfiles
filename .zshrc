@@ -20,7 +20,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+eval "$(brew shellenv)" # homebrew
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 export PATH="$HOME/bin:$PATH"
