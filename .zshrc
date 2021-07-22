@@ -70,16 +70,13 @@ export UPDATE_ZSH_DAYS=6
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -90,9 +87,6 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
-# hooks
-eval "$(direnv hook zsh)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # ssh
 export SSH_KEY_PATH="~/.ssh/rsa_id"
@@ -164,7 +158,6 @@ alias dfs="dotfiles"
 # hooks
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-eval "$(pyenv init -)"
 
 # enter tmux
 if [ -z "$TMUX" ]; then
