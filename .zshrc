@@ -99,6 +99,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # global
 
+alias -g C=" | pbcopy"
+alias -g S=" | sort"
+alias -g U=" | uniq"
 alias -g L=" | less"
 alias -g G=" | grep"
 alias -g F=" | fzf"
