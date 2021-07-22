@@ -158,6 +158,9 @@ alias reload="source ~/.zshrc"       # reload config
 alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
 alias dfs="dotfiles"
 
+#  different file to avoid tainting home/work configs
+[ -f ~/.hidden.zsh ] && source ~/.hidden.zsh
+
 # hooks
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
