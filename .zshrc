@@ -106,6 +106,13 @@ alias -g L=" | less"
 alias -g G=" | grep"
 alias -g F=" | fzf"
 
+# functions
+
+# fetch env var value from remote host
+function rvar() {
+  ssh $1 "printenv $2"
+}
+
 # basic
 
 alias cdb="cd $OLDPWD"
