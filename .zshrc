@@ -167,6 +167,13 @@ alias reload="source ~/.zshrc"       # reload config
 # dotfiles
 alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
 alias dfs="dotfiles"
+function dfstoggle() {
+  if [ -d ~/.dotfiles.git ]; then
+    mv ~/.dotfiles.git ~/.git
+  elif [ -d ~/.git ]; then
+    mv ~/.git ~/.dotfiles.git
+  fi
+}
 
 #  different file to avoid tainting home/work configs
 [ -f ~/.hidden.zsh ] && source ~/.hidden.zsh
