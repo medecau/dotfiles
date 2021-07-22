@@ -124,6 +124,9 @@ alias inv="invoke --config=.tasks" # invoke for user tasks
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
+function rcode() {
+  code --remote ssh-remote+$1 $2
+}
 alias codeconfig="$EDITOR $HOME/Library/Application Support/Code - Insiders/User/"
 
 # sublime apps
