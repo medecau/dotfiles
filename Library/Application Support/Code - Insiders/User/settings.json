@@ -61,4 +61,5 @@
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
+    "extensions.ignoreRecommendations": true,
 }
