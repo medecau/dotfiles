@@ -62,4 +62,5 @@
         "*.ipynb": "jupyter-notebook"
     },
     "extensions.ignoreRecommendations": true,
+    "redhat.telemetry.enabled": false,
 }
