@@ -127,7 +127,7 @@ alias g="git" # git alias should go in ~/.gitconfig
 alias t="tmux"
 
 alias dk="docker"
-alias inv="invoke --config=.tasks" # invoke for user tasks
+alias inv='invoke --search-root=$HOME' # invoke for user tasks
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
