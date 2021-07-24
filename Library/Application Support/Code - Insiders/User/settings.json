@@ -63,4 +63,5 @@
     },
     "extensions.ignoreRecommendations": true,
     "redhat.telemetry.enabled": false,
+    "python.formatting.blackPath": "~/bin/black",
 }
