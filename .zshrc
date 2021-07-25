@@ -120,18 +120,27 @@ function rvar() {
 # basic
 
 alias cdb="cd $OLDPWD"
-alias ls="ls -Gh"                  # with colors and human file sizes when necessary
+function cdf() {
+  target=$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')
+  [ "$target" != "" ] && cd "$target" || echo 'No Finder window found' >&2
+}
+
+alias ls="ls -GFhrt"               # with colors and symbols, human file sizes, and reverse sorted by time
 alias la="ls -a"                   # list with hidden files
 alias ll="la -l"                   # list with more info - Long
 alias lh="ls -d .*"                # only the hidden files
 alias mkdir="mkdir -pv"            # create directory and any missing parent directories
 alias pbclear="pbcopy < /dev/null" # clear pasteboard
+alias mancat="man -P cat"          # use cat as the pager
 
-alias g="git" # git alias should go in ~/.gitconfig
+alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
+alias macosup="softwareupdate -ia"
+
+alias g="git --no-pager" # git alias should go in ~/.gitconfig
 alias t="tmux"
-
 alias dk="docker"
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
+alias www='python -m http.server'
 
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
