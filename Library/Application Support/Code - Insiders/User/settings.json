@@ -64,4 +64,7 @@
     "extensions.ignoreRecommendations": true,
     "redhat.telemetry.enabled": false,
     "python.formatting.blackPath": "~/bin/black",
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
 }
