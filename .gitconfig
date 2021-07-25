@@ -13,14 +13,20 @@ defaultBranch = main
 
 [alias]
 alias = config --global --get-regexp "^alias"
+au = add -u
+af = add -f
+
 br = branch
+
 cm = commit
+cmm = commit -m
+cma = commit --amend
+
+co = checkout
+new = checkout -b
 
 st = status -sb
 
 spull = "!git stash && git pull --rebase && git stash pop"
 
-co = checkout
-new = "checkout -b"
-
-update = "fetch --all --tags --prune"
+update = fetch --all --tags --prune
