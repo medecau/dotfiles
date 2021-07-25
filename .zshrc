@@ -103,11 +103,13 @@ fi
 
 # global
 
-alias -g C=" | pbcopy"
+alias -g E=" | sed"
 alias -g S=" | sort"
 alias -g U=" | uniq"
-alias -g L=" | less"
 alias -g G=" | grep"
+
+alias -g C=" | pbcopy"
+alias -g L=" | less"
 alias -g F=" | fzf"
 
 # functions
