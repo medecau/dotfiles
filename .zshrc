@@ -132,8 +132,7 @@ alias mancat="man -P cat"          # use cat as the pager
 alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
 alias macosup="softwareupdate -ia"
 
-alias g="git --no-pager" # git alias should go in ~/.gitconfig
-alias t="tmux"
+alias git="git --no-pager" # git alias should go in ~/.gitconfig
 alias dk="docker"
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
