@@ -106,18 +106,11 @@ fi
 alias -g E=" | sed"
 alias -g S=" | sort"
 alias -g U=" | uniq"
-alias -g G=" | grep"
+alias -g G=" | grep -i"
 
 alias -g C=" | pbcopy"
 alias -g L=" | less"
 alias -g F=" | fzf"
-
-# functions
-
-# fetch env var value from remote host
-function rvar() {
-  ssh $1 "printenv $2"
-}
 
 # basic
 
@@ -144,6 +137,16 @@ alias dk="docker"
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
 
+alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
+
+# fetch env var value from remote host
+function rvar() {
+  ssh $1 "printenv $2"
+}
+
+function calc() {
+  python -c "print($@)"
+}
 
 # tailscale
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
