@@ -129,8 +129,9 @@ alias mkdir="mkdir -pv"            # create directory and any missing parent dir
 alias pbclear="pbcopy < /dev/null" # clear pasteboard
 alias mancat="man -P cat"          # use cat as the pager
 
-alias brewup="brew update && brew upgrade && brew cleanup && brew doctor"
+alias brewup="brew update && brew upgrade && brew cleanup"
 alias macosup="softwareupdate -ia"
+alias upall="macosup && brewup"
 
 alias git="git --no-pager" # git alias should go in ~/.gitconfig
 alias dk="docker"
