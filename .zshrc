@@ -189,7 +189,7 @@ alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
 alias reload="source ~/.zshrc"       # reload config
 
 # dotfiles
-alias dotfiles="git --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
+alias dotfiles="git --no-pager --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
 alias dfs="dotfiles"
 function dfstoggle() {
   if [ -d ~/.dotfiles.git ]; then
