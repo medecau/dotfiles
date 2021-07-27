@@ -187,6 +187,7 @@ alias cf="clang-format -i"  # format in-place
 alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
 alias reload="source ~/.zshrc"       # reload config
+alias gitconfig="$EDITOR ~/.gitconfig"
 
 # dotfiles
 alias dotfiles="git --no-pager --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
