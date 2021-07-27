@@ -111,6 +111,7 @@ alias -g G=" | grep -i"
 alias -g C=" | pbcopy"
 alias -g L=" | less"
 alias -g F=" | fzf"
+alias -g X=" | xargs"
 
 # basic
 
