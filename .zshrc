@@ -144,6 +144,11 @@ alias dk="docker"
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
 
+
+# tailscale
+alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
+alias ts="tailscale"
+
 # vscode
 alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code"
 function rcode() {
