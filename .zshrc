@@ -131,7 +131,8 @@ alias mancat="man -P cat"          # use cat as the pager
 
 alias brewup="brew update && brew upgrade && brew cleanup"
 alias macosup="softwareupdate -ia"
-alias upall="macosup && brewup"
+
+alias upall="macosup && brewup && find .pyenv/shims -name \"*-config\" -delete"
 
 alias git="git --no-pager" # git alias should go in ~/.gitconfig
 alias dk="docker"
