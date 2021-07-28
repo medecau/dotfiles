@@ -34,21 +34,6 @@ export GOPATH="$HOME/code/gopath"
 
 export PATH=$PATH:/Library/TeX/texbin
 
-# remove duplicates from PATH
-if [ -n "$PATH" ]; then
-  old_PATH=$PATH:
-  PATH=
-  while [ -n "$old_PATH" ]; do
-    x=${old_PATH%%:*} # the first remaining entry
-    case $PATH: in
-    *:"$x":*) ;;        # already there
-    *) PATH=$PATH:$x ;; # not there yet
-    esac
-    old_PATH=${old_PATH#*:}
-  done
-  PATH=${PATH#:}
-  unset old_PATH x
-fi
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -207,6 +192,22 @@ function dfstoggle() {
 # hooks
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# remove duplicates from PATH
+if [ -n "$PATH" ]; then
+  old_PATH=$PATH:
+  PATH=
+  while [ -n "$old_PATH" ]; do
+    x=${old_PATH%%:*} # the first remaining entry
+    case $PATH: in
+    *:"$x":*) ;;        # already there
+    *) PATH=$PATH:$x ;; # not there yet
+    esac
+    old_PATH=${old_PATH#*:}
+  done
+  PATH=${PATH#:}
+  unset old_PATH x
+fi
 
 # enter tmux
 if [ -z "$TMUX" ]; then
