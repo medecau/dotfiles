@@ -104,23 +104,24 @@ function cdf() {
   [ "$target" != "" ] && cd "$target" || echo 'No Finder window found' >&2
 }
 
-alias ls="ls -GFhrt"               # with colors and symbols, human file sizes, and reverse sorted by time
-alias la="ls -a"                   # list with hidden files
-alias ll="la -l"                   # list with more info - Long
-alias lh="ls -d .*"                # only the hidden files
-alias mkdir="mkdir -pv"            # create directory and any missing parent directories
-alias pbclear="pbcopy < /dev/null" # clear pasteboard
-alias mancat="man -P cat"          # use cat as the pager
+alias ls="ls -GFhrt"       # with colors and symbols, human file sizes, and reverse sorted by time
+alias la="ls -a"           # list with hidden files
+alias ll="la -l"           # list with more info - Long
+alias lh="ls -d .*"        # only the hidden files
+alias mkdir="mkdir -pv"    # create directory and any missing parent directories
+alias git="git --no-pager" # git alias should go in ~/.gitconfig
 
 alias brewup="brew update && brew upgrade && brew cleanup"
 alias macosup="softwareupdate -ia"
-
 alias upall="macosup && brewup && find .pyenv/shims -name \"*-config\" -delete"
 
-alias git="git --no-pager" # git alias should go in ~/.gitconfig
+alias pbclear="pbcopy < /dev/null" # clear pasteboard
+alias mancat="man -P cat"          # use cat as the pager
 alias dk="docker"
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
+alias treedirs='tree -d'
+alias treedu='tree -d --du -h'
 
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
 
