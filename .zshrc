@@ -93,7 +93,7 @@ alias -g G=" | grep -i"
 
 alias -g C=" | pbcopy"
 alias -g L=" | less"
-alias -g F=" | fzf"
+alias -g F=" | fzf --multi"
 alias -g X=" | xargs"
 
 # basic
@@ -122,6 +122,7 @@ alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
 
+# ripgrep with Witch Hazel colors
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
 
 # fetch env var value from remote host
