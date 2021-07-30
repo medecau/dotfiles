@@ -115,9 +115,8 @@ alias brewup="brew update && brew upgrade && brew cleanup"
 alias macosup="softwareupdate -ia"
 alias upall="macosup && brewup && find .pyenv/shims -name \"*-config\" -delete"
 
-alias pbclear="pbcopy < /dev/null" # clear pasteboard
-alias mancat="man -P cat"          # use cat as the pager
-alias dk="docker"
+alias pbclear="pbcopy < /dev/null"     # clear pasteboard
+alias mancat="man -P cat"              # use cat as the pager
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
 alias treedirs='tree -d'
@@ -133,6 +132,12 @@ function rvar() {
 function calc() {
   python -c "print($@)"
 }
+
+# container stuff
+alias dk="docker"
+alias dc="docker compose"
+alias mk="minikube"
+alias kc="kubectl"
 
 # tailscale
 alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
