@@ -164,11 +164,17 @@ alias s="autossh -M 0"
 alias sa="ssh-add"
 alias scp="scp -C" # scp with compression
 
+# PyEnv
+alias pyenv-versions-unref="pyenv versions G -v '^*' E -E 's/^ +//'"
+alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
+alias pyenv-uninstall='pyenv uninstall $(pyenv-versions-unref F) && pyenv rehash'
+
 # Python virtualenv
 alias ve="virtualenv"
 alias vei="ve .venv"                  # init
 alias vea="source .venv/bin/activate" # activate
 alias ved="deactivate"                # deactivate
+alias veia="vei && vea"
 
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
