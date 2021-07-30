@@ -149,7 +149,7 @@ alias code="/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resourc
 function rcode() {
   code --remote ssh-remote+$1 $2
 }
-alias codeconfig="$EDITOR $HOME/Library/Application Support/Code - Insiders/User/"
+alias codeconfig="$EDITOR ~/Library/Application Support/Code - Insiders/User/"
 
 # sublime apps
 alias subl="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
@@ -187,7 +187,7 @@ alias reload="source ~/.zshrc"       # reload config
 alias gitconfig="$EDITOR ~/.gitconfig"
 
 # dotfiles
-alias dotfiles="git --no-pager --git-dir='$HOME/.dotfiles.git' --work-tree=$HOME"
+alias dotfiles="git --no-pager --git-dir ~/.dotfiles.git --work-tree ~"
 alias dfs="dotfiles"
 function dfstoggle() {
   if [ -d ~/.dotfiles.git ]; then
