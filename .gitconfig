@@ -28,5 +28,11 @@ new = checkout -b
 st = status -sb
 
 spull = "!git stash && git pull --rebase && git stash pop"
-catchup = "!git --no-pager log --oneline --since=\"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --format=%cd)\""
+
+# 
+news = "!f() { \
+[[ ! -z $1 ]] && \
+git log --oneline --since $1 || \
+git --no-pager log --oneline --since \"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --format=%cd)\"; \
+}; f"
 update = fetch --all --tags --prune
