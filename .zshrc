@@ -110,7 +110,6 @@ alias upall="macosup && brewup && find .pyenv/shims -name \"*-config\" -delete"
 
 alias pbclear="pbcopy < /dev/null"     # clear pasteboard
 alias mancat="man -P cat"              # use cat as the pager
-alias inv='invoke --search-root=$HOME' # invoke for user tasks
 alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
@@ -173,6 +172,11 @@ alias veia="vei && vea"
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
 alias cf="clang-format -i"  # format in-place
+
+# invoke
+alias inv='invoke --search-root=$HOME' # invoke for user tasks
+eval "$(invoke --print-completion-script=zsh)"
+
 
 # ZSH utilities
 alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
