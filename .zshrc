@@ -88,6 +88,8 @@ alias -g C=" | pbcopy"
 alias -g L=" | less"
 alias -g F=" | fzf --multi"
 alias -g X=" | xargs"
+alias -g and=" && "
+alias -g or=" || "
 
 # basic
 
