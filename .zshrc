@@ -153,6 +153,7 @@ alias love="/Applications/love.app/Contents/MacOS/love"
 alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 
 # SSH
+alias autossh=autossh -o "ServerAliveInterval 2" -o "ServerAliveCountMax 2"
 alias s="autossh -M 0"
 alias sa="ssh-add"
 alias scp="scp -C" # scp with compression
