@@ -97,12 +97,6 @@ alias -g or=" || "
 
 # basic
 
-alias cdb="cd $OLDPWD"
-function cdf() {
-  target=$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')
-  [ "$target" != "" ] && cd "$target" || echo 'No Finder window found' >&2
-}
-
 alias ls="ls -GFhrt"       # with colors and symbols, human file sizes, and reverse sorted by time
 alias la="ls -a"           # list with hidden files
 alias ll="la -l"           # list with more info - Long
@@ -110,8 +104,18 @@ alias lh="ls -d .*"        # only the hidden files
 alias mkdir="mkdir -pv"    # create directory and any missing parent directories
 alias git="git --no-pager" # git alias should go in ~/.gitconfig
 
-alias pbclear="pbcopy < /dev/null"     # clear pasteboard
-alias mancat="man -P cat"              # use cat as the pager
+alias cdb="cd $OLDPWD"
+function cdf() {
+  target=$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')
+  [ "$target" != "" ] && cd "$target" || echo 'No Finder window found' >&2
+}
+function copyfile() {
+  cat $@ | pbcopy
+}
+alias ff="find . -type f -iname"
+alias pbclear="pbcopy < /dev/null" # clear pasteboard
+alias mancat="man -P cat"          # use cat as the pager
+alias mc=mancat
 alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
