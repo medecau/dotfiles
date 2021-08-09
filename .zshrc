@@ -110,10 +110,6 @@ alias lh="ls -d .*"        # only the hidden files
 alias mkdir="mkdir -pv"    # create directory and any missing parent directories
 alias git="git --no-pager" # git alias should go in ~/.gitconfig
 
-alias brewup="brew update && brew upgrade && brew cleanup"
-alias macosup="softwareupdate -ia"
-alias upall="macosup && brewup && find .pyenv/shims -name \"*-config\" -delete"
-
 alias pbclear="pbcopy < /dev/null"     # clear pasteboard
 alias mancat="man -P cat"              # use cat as the pager
 alias www='python -m http.server'
@@ -167,6 +163,7 @@ alias scp="scp -C" # scp with compression
 alias pyenv-versions-unref="pyenv versions G -v '^*' E -E 's/^ +//'"
 alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
 alias pyenv-uninstall='pyenv uninstall $(pyenv-versions-unref F) && pyenv rehash'
+alias pyenv-rm-config-files='find .pyenv/shims -name \"*-config\" -delete'
 
 # Python virtualenv
 alias ve="virtualenv"
@@ -189,6 +186,11 @@ alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
 alias reload="source ~/.zshrc"       # reload config
 alias gitconfig="$EDITOR ~/.gitconfig"
+
+# maintenance
+alias brewup="brew update && brew upgrade"
+alias macosup="softwareupdate -ia"
+alias upall="macosup && brewup"
 
 # dotfiles
 alias dotfiles="git --no-pager --git-dir ~/.dotfiles.git --work-tree ~"
