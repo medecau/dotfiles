@@ -77,17 +77,21 @@ fi
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# global
-
+# globals
+alias -g H=" | head"
+alias -g T=" | tail"
 alias -g E=" | sed"
 alias -g S=" | sort"
 alias -g U=" | uniq"
 alias -g G=" | grep -i"
-
-alias -g C=" | pbcopy"
 alias -g L=" | less"
-alias -g F=" | fzf --multi"
 alias -g X=" | xargs"
+
+# fancy globals
+alias -g C=" | pbcopy"
+alias -g F=" | fzf --multi"
+alias -g XI=" | xargs -I _"
+alias -g NE=" 2 > /dev/null"
 alias -g and=" && "
 alias -g or=" || "
 
