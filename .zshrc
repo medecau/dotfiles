@@ -180,10 +180,10 @@ alias veia="vei && vea"
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
 alias cf="clang-format -i"  # format in-place
 
-# invoke
+# invoke and fabfile
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
 eval "$(invoke --print-completion-script=zsh)"
-
+eval "$(fab --print-completion-script=zsh)"
 
 # ZSH utilities
 alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
