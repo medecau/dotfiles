@@ -163,6 +163,10 @@ alias s="autossh -M 0"
 alias sa="ssh-add"
 alias scp="scp -C" # scp with compression
 
+# age
+alias ageencme="age --encrypt -R ~/.ssh/id_ed25519.pub"
+alias agedecme="age --decrypt -i ~/.ssh/id_ed25519"
+
 # PyEnv
 alias pyenv-versions-unref="pyenv versions G -v '^*' E -E 's/^ +//'"
 alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
