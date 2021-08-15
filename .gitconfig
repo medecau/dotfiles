@@ -29,10 +29,10 @@ st = status -sb
 
 spull = "!git stash && git pull --rebase && git stash pop"
 
-# 
 news = "!f() { \
 [[ ! -z $1 ]] && \
-git log --oneline --since $1 || \
-git --no-pager log --oneline --since \"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --format=%cd)\"; \
+git --no-pager log --reverse --oneline --no-decorate --no-merges --since $1 || \
+git --no-pager log --reverse --oneline --no-decorate --no-merges --since \
+\"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --no-merges --format=%cd)\"; \
 }; f"
 update = fetch --all --tags --prune
