@@ -20,7 +20,7 @@ br = branch
 
 cm = commit
 cmm = commit -m
-cma = commit --amend
+cma = commit --amend --no-edit
 
 co = checkout
 new = checkout -b
