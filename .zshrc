@@ -37,6 +37,8 @@ export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
 export STNOUPGRADE=1                  # Syncthing
 export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
 export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
+export MEILI_NO_ANALYTICS=1           # MeiliSearch
+export MEILI_NO_SENTRY=1
 
 # history
 export HISTSIZE=1000000
