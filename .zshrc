@@ -87,6 +87,7 @@ alias -g U=" | uniq"
 alias -g G=" | grep -i"
 alias -g L=" | less"
 alias -g X=" | xargs"
+alias -g CL=" | wc -l"
 
 # fancy globals
 alias -g C=" | pbcopy"
