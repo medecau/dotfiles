@@ -5,6 +5,9 @@ email = medecau@gmail.com
 [init]
 defaultBranch = main
 
+[pull]
+rebase = true
+
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
@@ -13,6 +16,7 @@ required = true
 
 [alias]
 alias = config --global --get-regexp "^alias"
+
 au = add -u
 af = add -f
 
@@ -35,4 +39,5 @@ git --no-pager log --reverse --oneline --no-decorate --no-merges --since $1 || \
 git --no-pager log --reverse --oneline --no-decorate --no-merges --since \
 \"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --no-merges --format=%cd)\"; \
 }; f"
+
 update = fetch --all --tags --prune
