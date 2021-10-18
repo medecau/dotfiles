@@ -1,15 +1,15 @@
-[filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
-
 [user]
 name = Pedro Rodrigues
 email = medecau@gmail.com
 
 [init]
 defaultBranch = main
+
+[filter "lfs"]
+clean = git-lfs clean -- %f
+smudge = git-lfs smudge -- %f
+process = git-lfs filter-process
+required = true
 
 [alias]
 alias = config --global --get-regexp "^alias"
