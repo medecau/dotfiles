@@ -179,10 +179,12 @@ alias pyenv-rm-config-files='find .pyenv/shims -name \"*-config\" -delete'
 
 # Python virtualenv
 alias ve="virtualenv"
-alias vei="ve .venv"                  # init
-alias vea="source .venv/bin/activate" # activate
-alias ved="deactivate"                # deactivate
-alias veia="vei && vea"
+alias vei="ve .venv"                          # init
+alias vea="source .venv/bin/activate"         # activate
+alias ved="deactivate"                        # deactivate
+alias veia="vei && vea && pip install -U pip" # init and activate
+alias verm="ved; rm -rf .venv"                # remove
+alias vera="verm; veia"                       # recreate
 
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
