@@ -48,6 +48,8 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 eval "$(brew shellenv)" # homebrew
 
+export OPENBLAS="$(brew --prefix openblas)"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
