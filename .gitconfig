@@ -8,6 +8,9 @@ defaultBranch = main
 [pull]
 rebase = true
 
+[rebase]
+autoStash = true
+
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
@@ -30,8 +33,6 @@ co = checkout
 new = checkout -b
 
 st = status -sb
-
-spull = "!git stash && git pull --rebase && git stash pop"
 
 news = "!f() { \
 [[ ! -z $1 ]] && \
