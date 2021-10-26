@@ -62,7 +62,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$PATH:/usr/local/opt/go/libexec/bin"
 export GOPATH="$HOME/code/gopath"
 
-export PATH=$PATH:/Library/TeX/texbin
+export PATH="$PATH:/Library/TeX/texbin"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -172,9 +172,13 @@ alias ageencme="age --encrypt -R ~/.ssh/id_ed25519.pub"
 alias agedecme="age --decrypt -i ~/.ssh/id_ed25519"
 
 # PyEnv
+# list installed but unused pyenv versions
 alias pyenv-versions-unref="pyenv versions G -v '^*' E -E 's/^ +//'"
+# install version after picking one then rehash pyenv
 alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
+# uninstall a version by picking from unused versions
 alias pyenv-uninstall='pyenv uninstall $(pyenv-versions-unref F) && pyenv rehash'
+# clean up config files from pyenv shims
 alias pyenv-rm-config-files='find .pyenv/shims -name \"*-config\" -delete'
 
 # Python virtualenv
