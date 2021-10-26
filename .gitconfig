@@ -7,6 +7,8 @@ defaultBranch = main
 
 [core]
 pager = cat
+compression = 9
+looseCompression = 1
 
 [pull]
 rebase = true
