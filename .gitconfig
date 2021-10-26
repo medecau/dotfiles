@@ -5,6 +5,9 @@ email = medecau@gmail.com
 [init]
 defaultBranch = main
 
+[core]
+pager = cat
+
 [pull]
 rebase = true
 

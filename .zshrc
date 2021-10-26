@@ -102,12 +102,11 @@ alias -g or=" || "
 
 # basic
 
-alias ls="ls -GFhrt"       # with colors and symbols, human file sizes, and reverse sorted by time
-alias la="ls -a"           # list with hidden files
-alias ll="la -l"           # list with more info - Long
-alias lh="ls -d .*"        # only the hidden files
-alias mkdir="mkdir -pv"    # create directory and any missing parent directories
-alias git="git --no-pager" # git alias should go in ~/.gitconfig
+alias ls="ls -GFhrt"    # with colors and symbols, human file sizes, and reverse sorted by time
+alias la="ls -a"        # list with hidden files
+alias ll="la -l"        # list with more info - Long
+alias lh="ls -d .*"     # only the hidden files
+alias mkdir="mkdir -pv" # create directory and any missing parent directories
 
 alias cdb="cd $OLDPWD"
 function cdf() {
