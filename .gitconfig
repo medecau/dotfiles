@@ -14,6 +14,12 @@ rebase = true
 [rebase]
 autoStash = true
 
+[status]
+branch = true
+short = true
+showUntrackedFiles = no
+showStash = no
+
 [filter "lfs"]
 clean = git-lfs clean -- %f
 smudge = git-lfs smudge -- %f
@@ -34,8 +40,6 @@ cma = commit --amend --no-edit
 
 co = checkout
 new = checkout -b
-
-st = status -sb
 
 news = "!f() { \
 [[ ! -z $1 ]] && \
