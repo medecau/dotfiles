@@ -38,6 +38,7 @@ export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
 export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
 export MEILI_NO_ANALYTICS=1           # MeiliSearch
 export MEILI_NO_SENTRY=1
+# semgrep metrics are disabled in alias
 
 # history
 export HISTSIZE=1000000
@@ -189,6 +190,9 @@ alias ved="deactivate"                        # deactivate
 alias veia="vei && vea && pip install -U pip" # init and activate
 alias verm="ved; rm -rf .venv"                # remove
 alias vera="verm; veia"                       # recreate
+
+# semgrep
+alias semgrep='semgrep --disable-version-check --metrics=off '
 
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
