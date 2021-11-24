@@ -48,9 +48,9 @@ st = status
 # utils
 news = "!f() { \
 [[ ! -z $1 ]] && \
-git --no-pager log --reverse --oneline --no-decorate --no-merges --since $1 || \
-git --no-pager log --reverse --oneline --no-decorate --no-merges --since \
-\"$(git --no-pager log -n 1 --author=\"$(git config --get user.name)\" --no-merges --format=%cd)\"; \
+git log --reverse --oneline --no-decorate --no-merges --since $1 || \
+git log --reverse --oneline --no-decorate --no-merges --since \
+\"$(git log -n 1 --author=\"$(git whoami)\" --no-merges --format=%cd)\"; \
 }; f"
 
 # fetch branches and tags from all remotes then prune remote tracking branches and tags
