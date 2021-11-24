@@ -31,18 +31,17 @@ required = true
 [alias]
 alias = config --global --get-regexp "^alias"
 
-au = add -u
-af = add -f
-
+# shortcuts
+au = add --update # add only already tracked files
+af = add --force  # add otherwise ignored files
 br = branch
-
 cm = commit
-cmm = commit -m
+cmm = commit --message
 cma = commit --amend --no-edit
-
 co = checkout
 new = checkout -b
 
+# utils
 news = "!f() { \
 [[ ! -z $1 ]] && \
 git --no-pager log --reverse --oneline --no-decorate --no-merges --since $1 || \
@@ -51,3 +50,4 @@ git --no-pager log --reverse --oneline --no-decorate --no-merges --since \
 }; f"
 
 update = fetch --all --tags --prune
+# fetch branches and tags from all remotes then prune remote tracking branches and tags
