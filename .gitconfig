@@ -43,7 +43,7 @@ cm = commit
 cmm = commit --message
 cma = commit --amend --no-edit
 co = checkout
-new = checkout -b
+st = status
 
 # utils
 news = "!f() { \
@@ -55,3 +55,4 @@ git --no-pager log --reverse --oneline --no-decorate --no-merges --since \
 
 # fetch branches and tags from all remotes then prune remote tracking branches and tags
 update = fetch --all --tags --prune --prune-tags
+whoami = config --get user.email
