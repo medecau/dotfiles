@@ -192,7 +192,9 @@ alias verm="ved; rm -rf .venv"                # remove
 alias vera="verm; veia"                       # recreate
 
 # semgrep
-alias semgrep='semgrep --disable-version-check --metrics=off '
+alias semgrep='semgrep --disable-version-check --metrics=off'
+alias sg-python='semgrep --config="p/ci" --config="p/python"'
+alias sg-security='semgrep --config="p/secrets" --config="p/command-injection" --config="p/supply-chain" --config="p/trailofbits" --config="p/github-actions"'
 
 # C lang
 alias cc="cc -Wall -Werror" # all warnings + warnings are errors
