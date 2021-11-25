@@ -17,6 +17,9 @@ pruneTags = true
 [pull]
 rebase = true
 
+[push]
+default = upstream
+
 [rebase]
 autoStash = true
 
