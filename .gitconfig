@@ -39,12 +39,14 @@ required = true
 alias = config --global --get-regexp "^alias"
 
 # shortcuts
-au = add --update # add only already tracked files
 af = add --force  # add otherwise ignored files
+au = add --update # add only already tracked files
+ap = add --patch
 br = branch
 cm = commit
-cmm = commit --message
 cma = commit --amend --no-edit
+cmm = commit --message
+cmf = commit --fixup
 co = checkout
 st = status
 
@@ -55,6 +57,8 @@ git log --reverse --oneline --no-decorate --no-merges --since $1 || \
 git log --reverse --oneline --no-decorate --no-merges --since \
 \"$(git log -n 1 --author=\"$(git whoami)\" --no-merges --format=%cd)\"; \
 }; f"
+
+squash = rebase --autosquash
 
 # fetch branches and tags from all remotes then prune remote tracking branches and tags
 update = fetch --all --tags --prune --prune-tags
