@@ -10,15 +10,29 @@ pager = cat
 compression = 9
 looseCompression = 1
 
+[checkout]
+workers = 0
+
 [fetch]
 prune = true
 pruneTags = true
+parallel = 0
+
+[index]
+threads = 0
+
+[grep]
+threads = 0
+
+[pack]
+threads = 0
 
 [pull]
 rebase = true
 
 [push]
 default = upstream
+negotiate = true
 
 [rebase]
 autoStash = true
@@ -28,6 +42,9 @@ branch = true
 short = true
 showUntrackedFiles = no
 showStash = no
+
+[submodule]
+fetchJobs = 0
 
 [filter "lfs"]
 clean = git-lfs clean -- %f
