@@ -80,3 +80,9 @@ squash = rebase --autosquash
 # fetch branches and tags from all remotes then prune remote tracking branches and tags
 update = fetch --all --tags --prune --prune-tags
 whoami = config --get user.email
+
+# github cli
+pr = !gh pr
+prs = !gh prs
+issue = !gh issue
+issues = !gh issues
