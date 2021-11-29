@@ -102,6 +102,7 @@ alias -g and=" && "
 alias -g or=" || "
 
 # basic
+alias g='git'
 
 alias ls="ls -GFhrt"    # with colors and symbols, human file sizes, and reverse sorted by time
 alias la="ls -a"        # list with hidden files
