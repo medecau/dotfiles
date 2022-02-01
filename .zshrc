@@ -45,11 +45,11 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # paths
-export PATH="/usr/local/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
 eval "$(brew shellenv)" # homebrew
 
 export OPENBLAS="$(brew --prefix openblas)"
+export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(brew --prefix bzip2)/include"
+export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
