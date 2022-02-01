@@ -38,6 +38,7 @@ default = upstream
 negotiate = true
 
 [rebase]
+autoSquash = true
 autoStash = true
 
 [status]
