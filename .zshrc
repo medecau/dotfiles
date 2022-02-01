@@ -138,6 +138,9 @@ function calc() {
   python -c "print($@)"
 }
 
+# yt-dlp
+alias vget="yt-dlp"
+
 # container stuff
 alias dk="docker"
 alias dc="docker compose"
