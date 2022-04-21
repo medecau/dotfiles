@@ -1,6 +1,5 @@
 {
     "editor.largeFileOptimizations": false,
-    "python.insidersChannel": "weekly",
     "editor.inlineSuggest.enabled": true,
     "workbench.colorTheme": "Witch Hazel Hypercolor",
     "editor.suggestSelection": "first",
