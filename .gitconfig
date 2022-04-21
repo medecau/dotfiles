@@ -24,6 +24,9 @@ threads = 0
 [grep]
 threads = 0
 
+[merge]
+conflictStyle = diff3
+
 [pack]
 threads = 0
 
