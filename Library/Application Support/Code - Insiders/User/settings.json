@@ -65,4 +65,9 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
+    "python.testing.pytestEnabled": true,
+    "gitlens.blame.ignoreWhitespace": true,
+    "python.linting.banditPath": "~/bin/bandit",
+    "python.linting.banditEnabled": true,
+    "python.linting.mypyEnabled": true,
 }
