@@ -71,7 +71,7 @@ export PATH="$PATH:/Library/TeX/texbin"
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='code'
+  export EDITOR="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait"
 fi
 
 # Compilation flags
