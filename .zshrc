@@ -53,9 +53,14 @@ if [ -z $BREW_INIT ]; then
   eval "$(brew shellenv)" # homebrew
 fi
 
+PYENV_GLOBAL_VERION=$(pyenv global | head -n 1)
+BREW_READLINE_PREFIX=$(brew --prefix readline)
+
 export OPENBLAS="$(brew --prefix openblas)"
-export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(brew --prefix bzip2)/include"
-export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(brew --prefix bzip2)/lib -L$(brew --prefix zlib)/lib"
+export CFLAGS="-I$(brew --prefix openssl)/include -I$BREW_READLINE_PREFIX/include -I$(brew --prefix bzip2)/include"
+export LDFLAGS="-L$BREW_READLINE_PREFIX/lib"
+export CFLAGS="-I$(pyenv prefix $PYENV_GLOBAL_VERION)/include $CFLAGS" 
+export LDFLAGS="-L$(pyenv prefix $PYENV_GLOBAL_VERION)/lib $LDFLAGS" 
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
