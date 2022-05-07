@@ -15,12 +15,15 @@ export UPDATE_ZSH_DAYS=6
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=()
+# plugins=()
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-[ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
+if [ -z $OMZ_INIT ]; then
+  export OMZ_INIT=1
+  [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
+fi
 
 # User configuration
 
@@ -45,7 +48,10 @@ export HISTSIZE=1000000
 export SAVEHIST=1000000
 
 # paths
-eval "$(brew shellenv)" # homebrew
+if [ -z $BREW_INIT ]; then
+  export BREW_INIT=1
+  eval "$(brew shellenv)" # homebrew
+fi
 
 export OPENBLAS="$(brew --prefix openblas)"
 export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(brew --prefix bzip2)/include"
@@ -54,7 +60,10 @@ export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init --path)"
+if [ -z $PYENV_INIT ]; then
+  export PYENV_INIT=1 
+  eval "$(pyenv init --path)"
+fi
 
 # user
 export PATH="$HOME/bin:$PATH"
@@ -206,14 +215,24 @@ alias cf="clang-format -i"  # format in-place
 
 # invoke and fabfile
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
-eval "$(invoke --print-completion-script=zsh)"
-eval "$(fab --print-completion-script=zsh)"
+if [ -z $INVOKE_INIT ]; then
+  export INVOKE_INIT=1
+  eval "$(invoke --print-completion-script=zsh)"
+  eval "$(fab --print-completion-script=zsh)"
+fi
 
 # ZSH utilities
 alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
 alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
 alias reload="source ~/.zshrc"       # reload config
 alias gitconfig="$EDITOR ~/.gitconfig"
+function reload(){                     # reload config
+  unset BREW_INIT
+  unset INVOKE_INIT
+  unset OMZ_INIT
+  unset PYENV_INIT
+  source ~/.zshrc
+}
 
 # maintenance
 alias brewup="brew update && brew upgrade"
