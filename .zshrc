@@ -228,9 +228,14 @@ if [ -z $INVOKE_INIT ]; then
 fi
 
 # ZSH utilities
-alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
-alias reload="source ~/.zshrc"       # reload config
+function timezsh() {
+  for i in $(seq 1 10); do
+    shell=${1-$SHELL}
+    /usr/bin/time $shell -i -c exit;
+  done
+}
+alias zshconfig="$EDITOR ~/.zshrc"     # edit config file
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh"   # edit config dir
 alias gitconfig="$EDITOR ~/.gitconfig"
 function reload(){                     # reload config
   unset BREW_INIT
