@@ -34,7 +34,7 @@ threads = 0
 rebase = true
 
 [push]
-default = upstream
+default = current
 negotiate = true
 
 [rebase]
@@ -79,7 +79,7 @@ git log --reverse --oneline --no-decorate --no-merges --since \
 \"$(git log -n 1 --author=\"$(git whoami)\" --no-merges --format=%cd)\"; \
 }; f"
 
-squash = rebase --autosquash
+squash = rebase --interactive --autosquash
 
 # fetch branches and tags from all remotes then prune remote tracking branches and tags
 update = fetch --all --tags --prune --prune-tags
