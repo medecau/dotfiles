@@ -155,6 +155,10 @@ function calc() {
 # yt-dlp
 alias vget='yt-dlp'
 
+# ansible stuff
+alias ap="ansible-playbook"
+alias ai="ansible-inventory"
+
 # container stuff
 alias dk='docker'
 alias dc='docker compose'
