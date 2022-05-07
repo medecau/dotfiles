@@ -250,6 +250,18 @@ alias brewup='brew update && brew upgrade'
 alias macosup='softwareupdate -ia'
 alias upall='macosup && brewup'
 
+# funk
+function workup(){
+  if [ -f ./pyproject.toml ]; then
+    if [ ! -f ./poetry.lock ]; then
+      poetry lock
+    fi
+    poetry install
+  fi
+  smerge . && code .
+  [ -f ./pyproject.toml ] && poetry shell
+}
+
 # dotfiles
 alias dotfiles='git --no-pager --git-dir ~/.dotfiles.git --work-tree ~'
 alias dfs='dotfiles'
