@@ -23,7 +23,8 @@ if [ -z "$TMUX" ]; then # global environment
   export SAVEHIST=1000000
 
   # Bootstrap homebrew
-  if [ ! -f /opt/homebrew/bin/brew ]; then
+  local HOMEBREW_PATH="$(which brew)"
+  if [[ ! -f $HOMEBREW_PATH ]]; then
     echo 'Homebrew is missing!'
     if read -q "REPLY?Do you want to install Homebrew?"; then
       xcode-select --install # command-line tools
@@ -33,8 +34,8 @@ if [ -z "$TMUX" ]; then # global environment
   fi # fin bootstrap homebrew
 
   # Setup homebrew
-  if [ -f /opt/homebrew/bin/brew ]; then
-    eval "$(/opt/homebrew/bin/brew shellenv)" # homebrew
+  if [ -f $HOMEBREW_PATH ]; then
+    eval "$($HOMEBREW_PATH shellenv)" # homebrew
 
     # Bootstrap homebrew packages
     echo 'Installing required brew formulas and casks'
@@ -77,7 +78,7 @@ if [ -z "$TMUX" ]; then # global environment
   fi # fin setup homebrew
 
   # Setup pyenv
-  if [ -f /opt/homebrew/bin/pyenv ]; then
+  if [ -f "$(which pyenv)" ]; then
     export PYENV_ROOT="$HOME/.pyenv"
     export PATH="$PYENV_ROOT/bin:$PATH"
     eval "$(pyenv init --path)"
