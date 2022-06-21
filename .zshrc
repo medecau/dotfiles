@@ -37,43 +37,17 @@ if [ -z "$TMUX" ]; then # global environment
     eval "$(/opt/homebrew/bin/brew shellenv)" # homebrew
 
     # Bootstrap homebrew packages
-    echo 'Checking required brew formulas and casks'
+    echo 'Installing required brew formulas and casks'
     
-    HOMEBREW_NO_INSTALL_CLEANUP=1
-
-    # lib like
-    for lib in brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd; do
-      local prefix="$(brew --prefix $lib)"
-      if [[ $? -eq 0 && ! -e $prefix ]]; then
-        echo "Installing homebrew formula $lib"
-        brew install --formula $lib --build-from-source
-      fi
-    done # fin lib like
-
-    # exec like
-    for formula in zsh rg fzf tmux; do
-      if [ ! -f /opt/homebrew/bin/$formula ]; then
-        echo "Installing homebrew formula $formula"
-        brew install --formula $formula --build-from-source
-      fi
-    done
-    for formula in gh go direnv pyenv tldr tree wget yt-dlp; do
-      if [ ! -f /opt/homebrew/bin/$formula ]; then
-        echo "Installing homebrew formula $formula"
-        brew install --formula $formula --build-from-source
-      fi
-    done # fin exec like
-
-    # casks
-    for cask in docker sublime-merge sublime-text visual-studio-code vlc; do
-      if ! brew list $cask >>/dev/null; then
-        echo "Installing homebrew cask $cask"
-        brew install --cask $cask
-      fi
-    done # fin casks
+    HOMEBREW_NO_INSTALL_CLEANUP=1 brew install --quiet --formula \
+    brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
+    HOMEBREW_NO_INSTALL_CLEANUP=1 brew install --quiet --formula \
+    zsh rg fzf tmux \
+    gh go direnv pyenv tldr tree wget yt-dlp
+      
+    brew install --quiet --cask \
+    docker sublime-merge sublime-text visual-studio-code vlc
     # fin bootstrap homebrew packages
-
-    unset HOMEBREW_NO_INSTALL_CLEANUP
 
     echo 'Setting compiler flags'
     # Compiler flags
