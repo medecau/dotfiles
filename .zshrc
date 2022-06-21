@@ -1,96 +1,182 @@
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="witchhazelhypercolor"
+# We run these on the base shell to avoid the overhead when creating new panels in tmux
+if [ -z "$TMUX" ]; then # global environment
+  echo 'Setting up global environment variables'
 
-# Uncomment the following line to automatically update without prompting.
-DISABLE_UPDATE_PROMPT="true"
+  # locale
+  export LANG=en_US.UTF-8
+  unset LC_ALL
 
-# Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=6
+  # opt out of tracking
+  export DO_NOT_TRACK=1
+  export HOMEBREW_NO_ANALYTICS=1        # Homebrew
+  export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
+  export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
+  export STNOUPGRADE=1                  # Syncthing
+  export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
+  export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
+  export MEILI_NO_ANALYTICS=1           # MeiliSearch
+  export MEILI_NO_SENTRY=1
+  # semgrep metrics are disabled in alias
 
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-# plugins=()
+  # history
+  export HISTSIZE=1000000
+  export SAVEHIST=1000000
 
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+  # Bootstrap homebrew
+  if [ ! -f /opt/homebrew/bin/brew ]; then
+    echo 'Homebrew is missing!'
+    if read -q "REPLY?Do you want to install Homebrew?"; then
+      xcode-select --install # command-line tools
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+  fi # fin bootstrap homebrew
 
-if [ -z $OMZ_INIT ]; then
-  export OMZ_INIT=1
-  [ -f $ZSH/oh-my-zsh.sh ] && source $ZSH/oh-my-zsh.sh
-fi
+  # Setup homebrew
+  if [ -f /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)" # homebrew
 
-# User configuration
+    # Bootstrap homebrew packages
+    echo 'Checking required brew formulas and casks'
+    
+    HOMEBREW_NO_INSTALL_CLEANUP=1
 
-# locale
-export LANG=en_US.UTF-8
-export LC_ALL=$LANG
+    # lib like
+    for lib in brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd; do
+      local prefix="$(brew --prefix $lib)"
+      if [[ $? -eq 0 && ! -e $prefix ]]; then
+        echo "Installing homebrew formula $lib"
+        brew install --formula $lib --build-from-source
+      fi
+    done # fin lib like
 
-# opt out of tracking
-export DO_NOT_TRACK=1
-export HOMEBREW_NO_ANALYTICS=1        # Homebrew
-export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
-export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
-export STNOUPGRADE=1                  # Syncthing
-export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
-export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
-export MEILI_NO_ANALYTICS=1           # MeiliSearch
-export MEILI_NO_SENTRY=1
-# semgrep metrics are disabled in alias
+    # exec like
+    for formula in zsh rg fzf tmux; do
+      if [ ! -f /opt/homebrew/bin/$formula ]; then
+        echo "Installing homebrew formula $formula"
+        brew install --formula $formula --build-from-source
+      fi
+    done
+    for formula in gh go direnv pyenv tldr tree wget yt-dlp; do
+      if [ ! -f /opt/homebrew/bin/$formula ]; then
+        echo "Installing homebrew formula $formula"
+        brew install --formula $formula --build-from-source
+      fi
+    done # fin exec like
 
-# history
-export HISTSIZE=1000000
-export SAVEHIST=1000000
+    # casks
+    for cask in docker sublime-merge sublime-text visual-studio-code vlc; do
+      if ! brew list $cask >>/dev/null; then
+        echo "Installing homebrew cask $cask"
+        brew install --cask $cask
+      fi
+    done # fin casks
+    # fin bootstrap homebrew packages
 
-# paths
-if [ -z $BREW_INIT ]; then
-  export BREW_INIT=1
-  eval "$(brew shellenv)" # homebrew
-fi
+    unset HOMEBREW_NO_INSTALL_CLEANUP
 
-PYENV_GLOBAL_VERION=$(pyenv global | head -n 1)
-BREW_READLINE_PREFIX=$(brew --prefix readline)
+    echo 'Setting compiler flags'
+    # Compiler flags
+    # export ARCHFLAGS="-arch x86_64"
 
-export OPENBLAS="$(brew --prefix openblas)"
-export CFLAGS="-I$(brew --prefix openssl)/include -I$BREW_READLINE_PREFIX/include -I$(brew --prefix bzip2)/include"
-export LDFLAGS="-L$BREW_READLINE_PREFIX/lib"
-export CFLAGS="-I$(pyenv prefix $PYENV_GLOBAL_VERION)/include $CFLAGS" 
-export LDFLAGS="-L$(pyenv prefix $PYENV_GLOBAL_VERION)/lib $LDFLAGS" 
+    export HOMEBREW_PREFIX_BZIP2="$(brew --prefix bzip2)"
+    export HOMEBREW_PREFIX_OPENSSL="$(brew --prefix openssl)"
+    export HOMEBREW_PREFIX_READLINE="$(brew --prefix readline)"
+    export HOMEBREW_PREFIX_SQLITE3="$(brew --prefix sqlite3)"
+    export HOMEBREW_PREFIX_XZ="$(brew --prefix xz)"
+    export HOMEBREW_PREFIX_ZLIB="$(brew --prefix zlib)"
 
-# pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if [ -z $PYENV_INIT ]; then
-  export PYENV_INIT=1 
-  eval "$(pyenv init --path)"
-fi
+    export PYENV_PREFIX="$(pyenv prefix)"
 
-# user
-export PATH="$HOME/bin:$PATH"
+    export OPENBLAS="$(brew --prefix openblas)"
+    export CFLAGS="-I$HOMEBREW_PREFIX_BZIP2/include -I$HOMEBREW_PREFIX_OPENSSL/include -I$HOMEBREW_PREFIX_READLINE/include -I$HOMEBREW_PREFIX_SQLITE3/include -I$HOMEBREW_PREFIX_XZ/include -I$HOMEBREW_PREFIX_ZLIB/include -I$PYENV_PREFIX/include"
+    export CPPFLAGS="$CFLAGS"
+    export LDFLAGS="-L$HOMEBREW_PREFIX_BZIP2/lib -L$HOMEBREW_PREFIX_OPENSSL/lib -L$HOMEBREW_PREFIX_READLINE/lib -L$HOMEBREW_PREFIX_SQLITE3/lib -L$HOMEBREW_PREFIX_XZ/lib -L$HOMEBREW_PREFIX_ZLIB/lib -L$PYENV_PREFIX/lib"
 
-# GO
-export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-export GOPATH="$HOME/code/gopath"
+    # echo $CFLAGS
+    # echo $LDFLAGS
+    # fin compiler flags
 
-export PATH="$PATH:/Library/TeX/texbin"
+  else
+    echo 'Homebrew is missing'
 
-# export MANPATH="/usr/local/man:$MANPATH"
+  fi # fin setup homebrew
 
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait'
-fi
+  # Setup pyenv
+  if [ -f /opt/homebrew/bin/pyenv ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+  else
+    echo 'Pyenv is missing'
+  fi # fin setup pyenv
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+  # user
+  export PATH="$HOME/bin:$PATH"
 
+  # GO
+  # export PATH="$PATH:/usr/local/opt/go/libexec/bin"
+  # export GOPATH="$HOME/code/gopath"
+
+  # export PATH="$PATH:/Library/TeX/texbin"
+  # export MANPATH="/usr/local/man:$MANPATH"
+
+  # Preferred editor for local and remote sessions
+  if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+  else
+    export EDITOR='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait'
+  fi
+
+  # Oh My Zsh!
+
+  # Set name of the theme to load --- if set to "random", it will
+  # load a random theme each time oh-my-zsh is loaded, in which case,
+  # to know which specific one was loaded, run: echo $RANDOM_THEME
+  # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+  export ZSH_THEME="witchhazelhypercolor"
+
+  # Uncomment the following line to automatically update without prompting.
+  DISABLE_UPDATE_PROMPT="true"
+
+  # Uncomment the following line to change how often to auto-update (in days).
+  export UPDATE_ZSH_DAYS=6
+
+  # Which plugins would you like to load?
+  # Standard plugins can be found in $ZSH/plugins/
+  # Custom plugins may be added to $ZSH_CUSTOM/plugins/
+  # Example format: plugins=(rails git textmate ruby lighthouse)
+  # Add wisely, as too many plugins slow down shell startup.
+  # plugins=()
+
+  # Setup Oh-my-zsh!
+  _ZSH="$HOME/.oh-my-zsh"
+
+  if [ ! -f $_ZSH/oh-my-zsh.sh ]; then
+    echo 'Oh-My-Zsh! seems to be missing.'
+    if read -q "REPLY?Do you want to install Oh-My-Zsh!?"; then
+      if [[ -d $_ZSH && "REPLY?Do you want to delete $_ZSH ?" ]]; then
+        rm -rf $_ZSH
+      fi
+      sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    fi
+  fi
+  unset _ZSH # fin setup oh-my-zsh
+
+  # remove duplicates
+  typeset -U PATH
+fi # fin global environment
+
+if [ -f $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then # oh-my-zsh!
+  echo 'Oh-my-zsh!'
+  # Path to your oh-my-zsh installation.
+  export ZSH="$HOME/.oh-my-zsh"
+  source $ZSH/oh-my-zsh.sh
+fi # fin oh-my-zsh!
+
+# Defining aliases
+
+echo 'Defining command aliases'
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -118,7 +204,7 @@ alias -g or=' || '
 # basic
 alias g='git'
 
-alias ls='ls -GFhrt'    # with colors and symbols, human file sizes, and reverse sorted by time
+alias ls='ls -GFh'      # with colors and symbols, human file sizes, and reverse sorted by time
 alias la='ls -a'        # list with hidden files
 alias ll='la -l'        # list with more info - Long
 alias lh='ls -d .*'     # only the hidden files
@@ -171,11 +257,11 @@ alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 alias ts='tailscale'
 
 # vscode
-alias code='/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code'
-function rcode() {
-  code --remote ssh-remote+$1 $2
-}
-alias codeconfig="$EDITOR ~/Library/Application Support/Code - Insiders/User/"
+# alias code='/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code'
+# function rcode() {
+#   code --remote ssh-remote+$1 $2
+# }
+# alias codeconfig="$EDITOR ~/Library/Application Support/Code - Insiders/User/"
 
 # sublime apps
 alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
@@ -225,37 +311,28 @@ alias cf='clang-format -i'  # format in-place
 
 # invoke and fabfile
 alias inv='invoke --search-root=$HOME' # invoke for user tasks
-if [ -z $INVOKE_INIT ]; then
-  export INVOKE_INIT=1
-  eval "$(invoke --print-completion-script=zsh)"
-  eval "$(fab --print-completion-script=zsh)"
-fi
+[ -f ~/bin/invoke ] && eval "$(invoke --print-completion-script=zsh)"
+[ -f ~/bin/fab ] && eval "$(fab --print-completion-script=zsh)"
 
 # ZSH utilities
 function timezsh() {
   for i in $(seq 1 10); do
     shell=${1-$SHELL}
-    /usr/bin/time $shell -i -c exit;
+    /usr/bin/time $shell -i -c exit
   done
 }
-alias zshconfig="$EDITOR ~/.zshrc"     # edit config file
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh"   # edit config dir
+alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
+alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
 alias gitconfig="$EDITOR ~/.gitconfig"
-function reload(){                     # reload config
-  unset BREW_INIT
-  unset INVOKE_INIT
-  unset OMZ_INIT
-  unset PYENV_INIT
-  source ~/.zshrc
-}
+alias reload='source ~/.zshrc' # reload config
 
 # maintenance
 alias brewup='brew update && brew upgrade'
-alias macosup='softwareupdate -ia'
+alias macosup='softwareupdate -ia --force'
 alias upall='macosup && brewup'
 
 # funk
-function workup(){
+function workup() {
   if [ -f ./pyproject.toml ]; then
     if [ ! -f ./poetry.lock ]; then
       poetry lock
@@ -276,31 +353,17 @@ function dfstoggle() {
     mv ~/.git ~/.dotfiles.git
   fi
 }
+# fin defining aliases
 
+echo 'Sourcing the hidden file'
 #  different file to avoid tainting home/work configs
 [ -f ~/.hidden.zsh ] && source ~/.hidden.zsh
 
-# hooks
+echo 'Attaching hooks'
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# remove duplicates from PATH
-if [ -n "$PATH" ]; then
-  old_PATH=$PATH:
-  PATH=
-  while [ -n "$old_PATH" ]; do
-    x=${old_PATH%%:*} # the first remaining entry
-    case $PATH: in
-    *:"$x":*) ;;        # already there
-    *) PATH=$PATH:$x ;; # not there yet
-    esac
-    old_PATH=${old_PATH#*:}
-  done
-  PATH=${PATH#:}
-  unset old_PATH x
-fi
-
-# enter tmux
 if [ -z "$TMUX" ]; then
+  echo 'Starting tmux'
   tmux attach || tmux new
 fi
