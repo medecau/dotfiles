@@ -47,7 +47,7 @@ if [ -z "$TMUX" ]; then # global environment
     gh go direnv pyenv tldr tree wget yt-dlp
       
     brew install --quiet --cask \
-    docker sublime-merge sublime-text visual-studio-code vlc
+    docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
     # fin bootstrap homebrew packages
 
     echo 'Setting compiler flags'
@@ -203,6 +203,8 @@ alias treedu='tree -d --du -h'
 
 # ripgrep with Witch Hazel colors
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
+
+alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
 
 # fetch env var value from remote host
 function rvar() {
