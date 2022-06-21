@@ -23,19 +23,25 @@ if [ -z "$TMUX" ]; then # global environment
   export SAVEHIST=1000000
 
   # Bootstrap homebrew
-  local HOMEBREW_PATH="$(which brew)"
+  if [ -f /usr/local/bin/brew ]; then
+    echo 'Homebrew Intel path'
+    local HOMEBREW_PATH=/usr/local/bin/brew
+  else
+    echo 'Homebrew M1 path'
+    local HOMEBREW_PATH=/opt/homebrew/bin/brew
+  fi
+
   if [[ ! -f $HOMEBREW_PATH ]]; then
     echo 'Homebrew is missing!'
     if read -q "REPLY?Do you want to install Homebrew?"; then
       xcode-select --install # command-line tools
       /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-      eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
   fi # fin bootstrap homebrew
 
   # Setup homebrew
   if [ -f $HOMEBREW_PATH ]; then
-    eval "$($HOMEBREW_PATH shellenv)" # homebrew
+    eval "$($HOMEBREW_PATH shellenv)"
 
     # Bootstrap homebrew packages
     echo 'Installing required brew formulas and casks'
