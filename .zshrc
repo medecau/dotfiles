@@ -22,6 +22,8 @@ if [ -z "$TMUX" ]; then # global environment
   export HISTSIZE=1000000
   export SAVEHIST=1000000
 
+  export PROMPT_ROWS=1
+
   # Bootstrap homebrew
   if [ -f /usr/local/bin/brew ]; then
     echo 'Homebrew Intel path'
@@ -215,6 +217,10 @@ alias treedu='tree -d --du -h'
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
 
 alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
+
+function preexec() {
+  export VISIBLE_ROWS=$(( $LINES - $PROMPT_ROWS ))
+}
 
 # fetch env var value from remote host
 function rvar() {

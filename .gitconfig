@@ -69,7 +69,7 @@ cma = commit --amend --no-edit
 cmm = commit --message
 cmf = commit --fixup
 co = checkout
-lol = log --oneline --graph
+lol = !git log --oneline --graph -n $VISIBLE_ROWS
 st = status
 
 # utils
