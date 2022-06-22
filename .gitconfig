@@ -75,9 +75,8 @@ st = status
 # utils
 news = "!f() { \
 [[ ! -z $1 ]] && \
-git log --oneline --no-decorate --no-merges --since $1 || \
-git log --oneline --no-decorate --no-merges --since \
-\"$(git log -n 1 --author=\"$(git whoami)\" --no-merges --format=%cd)\"; \
+git log --oneline --graph --since $1 || \
+git log --oneline --graph $(git log -n 1 --author=$(git whoami) --no-merges --format=%H)^..; \
 }; f"
 
 squash = rebase --interactive --autosquash
