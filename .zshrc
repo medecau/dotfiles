@@ -219,7 +219,7 @@ alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:sty
 alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
 
 function preexec() {
-  export VISIBLE_ROWS=$(( $LINES - $PROMPT_ROWS ))
+  export VISIBLE_ROWS=$(( $LINES - $PROMPT_ROWS * 2 ))
 }
 
 # fetch env var value from remote host
