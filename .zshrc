@@ -46,14 +46,18 @@ if [ -z "$TMUX" ]; then # global environment
     # Bootstrap homebrew packages
     echo 'Installing required brew formulas and casks'
 
-    HOMEBREW_NO_INSTALL_CLEANUP=1 brew install --quiet --formula \
+    export HOMEBREW_NO_INSTALL_CLEANUP=1
+    export HOMEBREW_NO_INSTALL_UPGRADE=1
+    brew install --quiet --formula \
     brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
-    HOMEBREW_NO_INSTALL_CLEANUP=1 brew install --quiet --formula \
+    brew install --quiet --formula \
     zsh rg fzf tmux \
     gh go direnv pyenv tldr tree wget yt-dlp
 
     brew install --quiet --cask \
     docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
+    unset HOMEBREW_NO_INSTALL_CLEANUP
+    unset HOMEBREW_NO_INSTALL_UPGRADE 
     # fin bootstrap homebrew packages
 
     echo 'Setting compiler flags'
