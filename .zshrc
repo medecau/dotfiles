@@ -273,6 +273,15 @@ function chpwd() {
     echo "$fg[cyan]Enter '$fg[white]poetry shell$fg[cyan]' to activate "
   fi
 }
+
+# search history with up/down arrow keys
+bindkey '\e[A' history-beginning-search-backward
+bindkey '\e[B' history-beginning-search-forward
+
+setopt extendedhistory
+setopt sharehistory
+setopt HIST_SAVE_NO_DUPS
+
 # Starship prompt
 eval "$(starship init zsh)"
 
