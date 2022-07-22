@@ -53,16 +53,16 @@ if [ -z "$TMUX" ]; then # global environment
     export HOMEBREW_NO_INSTALL_UPGRADE=1
 
     brew install --quiet --formula \
-    brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
+      brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
     brew install --quiet --formula \
-    autossh fzf git rg tmux zsh  \
-    gh go direnv pyenv rsync rust tldr tree watch wget yt-dlp
+      autossh fzf git rg tmux zsh \
+      gh go direnv pyenv rsync rust tldr tree watch wget yt-dlp
 
     brew install --quiet --cask \
-    docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
+      docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
     unset HOMEBREW_NO_AUTO_UPDATE
     unset HOMEBREW_NO_INSTALL_CLEANUP
-    unset HOMEBREW_NO_INSTALL_UPGRADE 
+    unset HOMEBREW_NO_INSTALL_UPGRADE
     # fin bootstrap homebrew packages
 
     echo 'Setting compiler flags'
@@ -180,7 +180,7 @@ alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:sty
 alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
 
 function preexec() {
-  export VISIBLE_ROWS=$(( $LINES - $PROMPT_ROWS * 2 ))
+  export VISIBLE_ROWS=$(($LINES - $PROMPT_ROWS * 2))
 }
 function chpwd() {
   echo "$fg[magenta]$OLDPWD"
@@ -314,10 +314,10 @@ function workup() {
 function syncd() {
   echo "Synchronizing $2 with $1"
   rsync --recursive --update --times \
-  --rsh=ssh --delay-updates \
-  --compress --compress-level=9 \
-  --human-readable \
-  $1 $2
+    --rsh=ssh --delay-updates \
+    --compress --compress-level=9 \
+    --human-readable \
+    $1 $2
 }
 
 function 2waysync() {
