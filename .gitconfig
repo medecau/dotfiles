@@ -70,6 +70,7 @@ cmm = commit --message
 cmf = commit --fixup
 co = checkout
 lol = !git log --oneline --graph --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
+pop = stash pop
 st = status
 
 # utils
