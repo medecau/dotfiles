@@ -46,23 +46,8 @@ if [ -z "$TMUX" ]; then # global environment
     eval "$($HOMEBREW_PATH shellenv)"
 
     # Bootstrap homebrew packages
-    echo 'Installing required brew formulas and casks'
-
-    export HOMEBREW_NO_AUTO_UPDATE=1
-    export HOMEBREW_NO_INSTALL_CLEANUP=1
-    export HOMEBREW_NO_INSTALL_UPGRADE=1
-
-    brew install --quiet --formula \
-      brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
-    brew install --quiet --formula \
-      autossh fzf git rg tmux zsh \
-      gh go direnv pyenv rsync rust tldr tree watch wget yt-dlp
-
-    brew install --quiet --cask \
-      docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
-    unset HOMEBREW_NO_AUTO_UPDATE
-    unset HOMEBREW_NO_INSTALL_CLEANUP
-    unset HOMEBREW_NO_INSTALL_UPGRADE
+    echo 'Running brew bundle install'
+    brew bundle install --no-upgrade
     # fin bootstrap homebrew packages
 
     echo 'Setting compiler flags'
