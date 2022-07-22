@@ -227,6 +227,15 @@ function preexec() {
 function chpwd() {
   echo "$fg[magenta]$OLDPWD"
   echo "$fg[cyan]$PWD"
+  if [ -f .venv/bin/activate ]; then
+    echo "$fg[yellow].venv: $(.venv/bin/python --version)"
+    echo "$fg[cyan]Enter 'vea' to activate"
+
+  fi
+  if [ -f pyproject.toml ]; then
+    echo "$fg[yellow]Project: $fg[white]$(poetry version)$fg[yellow] - $fg[white]$(poetry run python --version)"
+    echo "$fg[cyan]Enter '$fg[white]poetry shell$fg[cyan]' to activate "
+  fi
 }
 
 # fetch env var value from remote host
