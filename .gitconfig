@@ -69,11 +69,13 @@ cma = commit --amend --no-edit
 cmm = commit --message
 cmf = commit --fixup
 co = checkout
-lol = !git log --oneline --graph --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
 pop = stash pop
 st = status
 
 # utils
+lol = !git log --oneline --decorate --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
+lmao =  !git log --oneline --decorate --graph --all --color=always -n $VISIBLE_ROWS  | head -n $VISIBLE_ROWS
+
 news = "!f() { \
 [[ ! -z $1 ]] && \
 git log --oneline --graph --since $1 || \
