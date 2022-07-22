@@ -389,6 +389,16 @@ eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -z "$TMUX" ]; then
+if [[ -z "$TMUX" && -z "$SSH_TTY" ]]; then
   echo 'Starting tmux'
-  tmux attach || tmux new
+  tmux attach || tmux new-session
+elif [ -n "$SSH_TTY" ]; then
+  echo "$fg[cyan]SSH sesssion"
+  tmux ls &>/dev/null
+  if [ $? -eq 0 ]; then
+    echo "$fg[yellow]tmux a"
+  else
+    echo "$fg[yellow]tmux new"
+  fi
+
 fi
