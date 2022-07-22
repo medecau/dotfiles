@@ -24,6 +24,7 @@ brew "sqlite"
 # tools
 ## lang
 brew "go"
+brew "llvm"
 brew "pyenv"
 brew "rust"
 
