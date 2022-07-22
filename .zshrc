@@ -332,17 +332,15 @@ function preexec() {
 }
 
 function chpwd() {
-  echo "$fg[magenta]$OLDPWD"
-  echo "$fg[cyan]$PWD"
-  if [ -f .venv/bin/activate ]; then
-    echo "$fg[yellow].venv: $(.venv/bin/python --version)"
-    echo "$fg[cyan]Enter 'vea' to activate"
-
-  fi
-  if [ -f pyproject.toml ]; then
-    echo "$fg[yellow]Project: $fg[white]$(poetry version)$fg[yellow] - $fg[white]$(poetry run python --version)"
-    echo "$fg[cyan]Enter '$fg[white]poetry shell$fg[cyan]' to activate "
-  fi
+  echo "$fg[magenta]- $OLDPWD"
+  echo "$fg[cyan]+ $PWD"
+  
+  [ -d '.git' ] && echo "$fg[yellow].git"
+  [ -f 'Makefile' ] && echo "$fg[yellow]Makefile"
+  [ -f 'Dockerfile' ] && echo "$fg[yellow]Dockerfile"
+  [ -f 'docker-compose.yml' ] && echo "$fg[yellow]Dockerfile"
+  [ -d '.venv' ] && echo "$fg[yellow].venv"
+  [ -f 'pyproject.toml' ] && echo "$fg[yellow]pyproject.toml"
 }
 
 # search history with up/down arrow keys
