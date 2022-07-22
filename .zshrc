@@ -22,7 +22,7 @@ if [ -z "$TMUX" ]; then # global environment
   export HISTSIZE=1000000
   export SAVEHIST=1000000
 
-  export PROMPT_ROWS=1
+  export PROMPT_ROWS=3
 
   # Bootstrap homebrew
   if [ -f /usr/local/bin/brew ]; then
@@ -118,51 +118,9 @@ if [ -z "$TMUX" ]; then # global environment
     export EDITOR='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait'
   fi
 
-  # Oh My Zsh!
-
-  # Set name of the theme to load --- if set to "random", it will
-  # load a random theme each time oh-my-zsh is loaded, in which case,
-  # to know which specific one was loaded, run: echo $RANDOM_THEME
-  # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-  export ZSH_THEME="witchhazelhypercolor"
-
-  # Uncomment the following line to automatically update without prompting.
-  DISABLE_UPDATE_PROMPT="true"
-
-  # Uncomment the following line to change how often to auto-update (in days).
-  export UPDATE_ZSH_DAYS=6
-
-  # Which plugins would you like to load?
-  # Standard plugins can be found in $ZSH/plugins/
-  # Custom plugins may be added to $ZSH_CUSTOM/plugins/
-  # Example format: plugins=(rails git textmate ruby lighthouse)
-  # Add wisely, as too many plugins slow down shell startup.
-  # plugins=()
-
-  # Setup Oh-my-zsh!
-  _ZSH="$HOME/.oh-my-zsh"
-
-  if [ ! -f $_ZSH/oh-my-zsh.sh ]; then
-    echo 'Oh-My-Zsh! seems to be missing.'
-    if read -q "REPLY?Do you want to install Oh-My-Zsh!?"; then
-      if [[ -d $_ZSH && "REPLY?Do you want to delete $_ZSH ?" ]]; then
-        rm -rf $_ZSH
-      fi
-      sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-    fi
-  fi
-  unset _ZSH # fin setup oh-my-zsh
-
   # remove duplicates
   typeset -U PATH
 fi # fin global environment
-
-if [ -f $HOME/.oh-my-zsh/oh-my-zsh.sh ]; then # oh-my-zsh!
-  echo 'Oh-my-zsh!'
-  # Path to your oh-my-zsh installation.
-  export ZSH="$HOME/.oh-my-zsh"
-  source $ZSH/oh-my-zsh.sh
-fi # fin oh-my-zsh!
 
 # Defining aliases
 
@@ -388,7 +346,9 @@ echo 'Attaching hooks'
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-if [ -z "$TMUX" ]; then
+# Starship prompt
+eval "$(starship init zsh)"
+
 if [[ -z "$TMUX" && -z "$SSH_TTY" ]]; then
   echo 'Starting tmux'
   tmux attach || tmux new-session
