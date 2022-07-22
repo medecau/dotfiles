@@ -113,6 +113,11 @@ alias ls='ls -GFh'      # with colors and symbols, human file sizes, and reverse
 alias la='ls -a'        # list with hidden files
 alias ll='la -l'        # list with more info - Long
 alias lh='ls -d .*'     # only the hidden files
+
+alias clean='make clean'
+alias test='make test'
+alias dry='make -n'
+
 alias mkdir='mkdir -pv' # create directory and any missing parent directories
 
 alias cdb="cd $OLDPWD"
