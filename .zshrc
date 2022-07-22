@@ -295,10 +295,19 @@ alias upall='macosup && brewup'
 # synchronize two, possibly remote, directories
 function syncd() {
   echo "Synchronizing $2 with $1"
+  # recurse into directories
+  # skip files that are newer on the receiver
+  # preserve modification times
+  # exclude hidden files
+  # connect over ssh
+  # put all update files in place at the end
+  # compress data during transfer at maximum level
+  # entertain me
   rsync --recursive --update --times \
+    --exclude '.*' \
     --rsh=ssh --delay-updates \
     --compress --compress-level=9 \
-    --human-readable \
+    --progress --human-readable --stats \
     $1 $2
 }
 
