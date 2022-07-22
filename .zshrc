@@ -109,10 +109,10 @@ alias -g or=' || '
 # basic
 alias help='man -P cat'
 
-alias ls='ls -GFh'      # with colors and symbols, human file sizes, and reverse sorted by time
-alias la='ls -a'        # list with hidden files
-alias ll='la -l'        # list with more info - Long
-alias lh='ls -d .*'     # only the hidden files
+alias ls='ls -GFh'  # with colors and symbols, human file sizes, and reverse sorted by time
+alias la='ls -a'    # list with hidden files
+alias ll='la -l'    # list with more info - Long
+alias lh='ls -d .*' # only the hidden files
 
 alias clean='make clean'
 alias test='make test'
@@ -335,7 +335,7 @@ function preexec() {
 function chpwd() {
   echo "$fg[magenta]- $OLDPWD"
   echo "$fg[cyan]+ $PWD"
-  
+
   [ -d '.git' ] && echo "$fg[yellow].git"
   [ -f 'Makefile' ] && echo "$fg[yellow]Makefile"
   [ -f 'Dockerfile' ] && echo "$fg[yellow]Dockerfile"
@@ -353,9 +353,9 @@ setopt sharehistory
 setopt HIST_SAVE_NO_DUPS
 setopt EXTENDED_GLOB
 
-setopt AUTO_PUSHD           # Push the current directory visited on the stack.
-setopt PUSHD_IGNORE_DUPS    # Do not store duplicates in the stack.
-setopt PUSHD_SILENT         # Do not print the directory stack after pushd or popd.
+setopt AUTO_PUSHD        # Push the current directory visited on the stack.
+setopt PUSHD_IGNORE_DUPS # Do not store duplicates in the stack.
+setopt PUSHD_SILENT      # Do not print the directory stack after pushd or popd.
 
 autoload -Uz compinit && compinit
 autoload -Uz colors && colors
