@@ -55,8 +55,8 @@ if [ -z "$TMUX" ]; then # global environment
     brew install --quiet --formula \
     brotli bzip2 curl libzip ncurses openssl pcre2 readline sqlite3 xz zlib zstd
     brew install --quiet --formula \
-    zsh autossh rg fzf tmux  \
-    gh go direnv pyenv rsync tldr tree wget yt-dlp
+    autossh fzf git rg tmux zsh  \
+    gh go direnv pyenv rsync rust tldr tree watch wget yt-dlp
 
     brew install --quiet --cask \
     docker hex-fiend keka obsidian sublime-merge sublime-text tor-browser visual-studio-code vlc
