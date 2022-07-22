@@ -339,6 +339,22 @@ function workup() {
   [ -f ./pyproject.toml ] && poetry shell
 }
 
+# synchronize two, possibly remote, directories
+function syncd() {
+  echo "Synchronizing $2 with $1"
+  rsync --recursive --update --times \
+  --rsh=ssh --delay-updates \
+  --compress --compress-level=9 \
+  --human-readable \
+  $1 $2
+}
+
+function 2waysync() {
+  echo "Two way sync between $1 and $2"
+  syncd $1 $2
+  syncd $2 $1
+}
+
 # dotfiles
 alias dotfiles='git --no-pager --git-dir ~/.dotfiles.git --work-tree ~'
 alias dfs='dotfiles'
