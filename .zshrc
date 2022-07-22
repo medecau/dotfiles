@@ -164,23 +164,6 @@ alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:sty
 
 alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
 
-function preexec() {
-  export VISIBLE_ROWS=$(($LINES - $PROMPT_ROWS * 2))
-}
-function chpwd() {
-  echo "$fg[magenta]$OLDPWD"
-  echo "$fg[cyan]$PWD"
-  if [ -f .venv/bin/activate ]; then
-    echo "$fg[yellow].venv: $(.venv/bin/python --version)"
-    echo "$fg[cyan]Enter 'vea' to activate"
-
-  fi
-  if [ -f pyproject.toml ]; then
-    echo "$fg[yellow]Project: $fg[white]$(poetry version)$fg[yellow] - $fg[white]$(poetry run python --version)"
-    echo "$fg[cyan]Enter '$fg[white]poetry shell$fg[cyan]' to activate "
-  fi
-}
-
 # fetch env var value from remote host
 function rvar() {
   ssh $1 "printenv $2"
@@ -331,6 +314,23 @@ echo 'Attaching hooks'
 eval "$(direnv hook zsh)"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+function preexec() {
+  export VISIBLE_ROWS=$(($LINES - $PROMPT_ROWS * 2))
+}
+
+function chpwd() {
+  echo "$fg[magenta]$OLDPWD"
+  echo "$fg[cyan]$PWD"
+  if [ -f .venv/bin/activate ]; then
+    echo "$fg[yellow].venv: $(.venv/bin/python --version)"
+    echo "$fg[cyan]Enter 'vea' to activate"
+
+  fi
+  if [ -f pyproject.toml ]; then
+    echo "$fg[yellow]Project: $fg[white]$(poetry version)$fg[yellow] - $fg[white]$(poetry run python --version)"
+    echo "$fg[cyan]Enter '$fg[white]poetry shell$fg[cyan]' to activate "
+  fi
+}
 # Starship prompt
 eval "$(starship init zsh)"
 
