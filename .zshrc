@@ -345,8 +345,8 @@ function chpwd() {
 }
 
 # search history with up/down arrow keys
-bindkey '\e[A' history-beginning-search-backward
-bindkey '\e[B' history-beginning-search-forward
+bindkey '\e[A' history-search-backward
+bindkey '\e[B' history-search-forward
 
 setopt extendedhistory
 setopt sharehistory
