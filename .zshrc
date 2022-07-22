@@ -312,9 +312,15 @@ function syncd() {
 }
 
 function 2waysync() {
-  echo "Two way sync between $1 and $2"
-  syncd $1 $2
-  syncd $2 $1
+  if [ $(basename $1) != $(basename $2) ]; then
+    echo 'basename for both paths must match'
+    false
+  else
+    echo "Two way sync between $1 and $2"
+    syncd $1 $(dirname $2)/
+    syncd $2 $(dirname $1)/
+  fi
+
 }
 
 # dotfiles
