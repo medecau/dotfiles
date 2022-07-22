@@ -1,111 +1,83 @@
+# locale
+export LANG=en_US.UTF-8
+unset LC_ALL
+
+# opt out of tracking
+export DO_NOT_TRACK=1
+export HOMEBREW_NO_ANALYTICS=1        # Homebrew
+export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
+export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
+export STNOUPGRADE=1                  # Syncthing
+export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
+export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
+export MEILI_NO_ANALYTICS=1           # MeiliSearch
+export MEILI_NO_SENTRY=1
+# semgrep metrics are disabled in alias
+
+# history
+# do not put these inside "if" blocks
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
+export PROMPT_ROWS=3
+
+export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
+
+eval "$(brew shellenv)"
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+export PATH="$PATH:$(brew --prefix go)/libexec/bin"
+
+export PATH="$HOME/bin:$PATH"
+
+hash -r
+
 # We run these on the base shell to avoid the overhead when creating new panels in tmux
 if [ -z "$TMUX" ]; then # global environment
-  echo 'Setting up global environment variables'
+  brew bundle install --no-upgrade --quiet
 
-  # locale
-  export LANG=en_US.UTF-8
-  unset LC_ALL
+  export HOMEBREW_PREFIX_BZIP2="$(brew --prefix bzip2)"
+  export HOMEBREW_PREFIX_OPENSSL="$(brew --prefix openssl)"
+  export HOMEBREW_PREFIX_READLINE="$(brew --prefix readline)"
+  export HOMEBREW_PREFIX_SQLITE3="$(brew --prefix sqlite3)"
+  export HOMEBREW_PREFIX_XZ="$(brew --prefix xz)"
+  export HOMEBREW_PREFIX_ZLIB="$(brew --prefix zlib)"
 
-  # opt out of tracking
-  export DO_NOT_TRACK=1
-  export HOMEBREW_NO_ANALYTICS=1        # Homebrew
-  export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
-  export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
-  export STNOUPGRADE=1                  # Syncthing
-  export SAM_CLI_TELEMETRY=0            # AWS Serverless Application Model
-  export AZURE_CORE_COLLECT_TELEMETRY=0 # Azure CLI
-  export MEILI_NO_ANALYTICS=1           # MeiliSearch
-  export MEILI_NO_SENTRY=1
-  # semgrep metrics are disabled in alias
+  export PYENV_PREFIX="$(pyenv prefix)"
 
-  # history
-  export HISTSIZE=1000000
-  export SAVEHIST=1000000
+  export CFLAGS="-I$HOMEBREW_PREFIX_BZIP2/include \
+    -I$HOMEBREW_PREFIX_OPENSSL/include \
+    -I$HOMEBREW_PREFIX_READLINE/include \
+    -I$HOMEBREW_PREFIX_SQLITE3/include \
+    -I$HOMEBREW_PREFIX_XZ/include\
+    -I$HOMEBREW_PREFIX_ZLIB/include\
+    -I$PYENV_PREFIX/include"
+  export CPPFLAGS="$CFLAGS"
 
-  export PROMPT_ROWS=3
+  export LDFLAGS="-L$HOMEBREW_PREFIX_BZIP2/lib\
+    -L$HOMEBREW_PREFIX_OPENSSL/lib\
+    -L$HOMEBREW_PREFIX_READLINE/lib\
+    -L$HOMEBREW_PREFIX_SQLITE3/lib\
+    -L$HOMEBREW_PREFIX_XZ/lib\
+    -L$HOMEBREW_PREFIX_ZLIB/lib\
+    -L$PYENV_PREFIX/lib"
 
-  # Bootstrap homebrew
-  if [ -f /usr/local/bin/brew ]; then
-    echo 'Homebrew Intel path'
-    local HOMEBREW_PATH=/usr/local/bin/brew
-  else
-    echo 'Homebrew M1 path'
-    local HOMEBREW_PATH=/opt/homebrew/bin/brew
-  fi
+  export OPENBLAS="$(brew --prefix openblas)"
+  export LLVM_CONFIG="$(brew --prefix llvm)/bin/llvm-config"
+fi
 
-  if [[ ! -f $HOMEBREW_PATH ]]; then
-    echo 'Homebrew is missing!'
-    if read -q "REPLY?Do you want to install Homebrew?"; then
-      xcode-select --install # command-line tools
-      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    fi
-  fi # fin bootstrap homebrew
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait'
+fi
 
-  # Setup homebrew
-  if [ -f $HOMEBREW_PATH ]; then
-    eval "$($HOMEBREW_PATH shellenv)"
-
-    # Bootstrap homebrew packages
-    echo 'Running brew bundle install'
-    brew bundle install --no-upgrade
-    # fin bootstrap homebrew packages
-
-    echo 'Setting compiler flags'
-    # Compiler flags
-    # export ARCHFLAGS="-arch x86_64"
-
-    export HOMEBREW_PREFIX_BZIP2="$(brew --prefix bzip2)"
-    export HOMEBREW_PREFIX_OPENSSL="$(brew --prefix openssl)"
-    export HOMEBREW_PREFIX_READLINE="$(brew --prefix readline)"
-    export HOMEBREW_PREFIX_SQLITE3="$(brew --prefix sqlite3)"
-    export HOMEBREW_PREFIX_XZ="$(brew --prefix xz)"
-    export HOMEBREW_PREFIX_ZLIB="$(brew --prefix zlib)"
-
-    export PYENV_PREFIX="$(pyenv prefix)"
-
-    export OPENBLAS="$(brew --prefix openblas)"
-    export CFLAGS="-I$HOMEBREW_PREFIX_BZIP2/include -I$HOMEBREW_PREFIX_OPENSSL/include -I$HOMEBREW_PREFIX_READLINE/include -I$HOMEBREW_PREFIX_SQLITE3/include -I$HOMEBREW_PREFIX_XZ/include -I$HOMEBREW_PREFIX_ZLIB/include -I$PYENV_PREFIX/include"
-    export CPPFLAGS="$CFLAGS"
-    export LDFLAGS="-L$HOMEBREW_PREFIX_BZIP2/lib -L$HOMEBREW_PREFIX_OPENSSL/lib -L$HOMEBREW_PREFIX_READLINE/lib -L$HOMEBREW_PREFIX_SQLITE3/lib -L$HOMEBREW_PREFIX_XZ/lib -L$HOMEBREW_PREFIX_ZLIB/lib -L$PYENV_PREFIX/lib"
-
-    # echo $CFLAGS
-    # echo $LDFLAGS
-    # fin compiler flags
-
-  else
-    echo 'Homebrew is missing'
-
-  fi # fin setup homebrew
-
-  # Setup pyenv
-  if [ -f "$(which pyenv)" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-  else
-    echo 'Pyenv is missing'
-  fi # fin setup pyenv
-
-  # user
-  export PATH="$HOME/bin:$PATH"
-
-  # GO
-  # export PATH="$PATH:/usr/local/opt/go/libexec/bin"
-  # export GOPATH="$HOME/code/gopath"
-
-  # export PATH="$PATH:/Library/TeX/texbin"
-  # export MANPATH="/usr/local/man:$MANPATH"
-
-  # Preferred editor for local and remote sessions
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
-    export EDITOR='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl --wait'
-  fi
-
-  # remove duplicates
-  typeset -U PATH
-fi # fin global environment
+# remove duplicates
+typeset -U PATH
 
 # Defining aliases
 
@@ -315,5 +287,4 @@ elif [ -n "$SSH_CONNECTION" ]; then
   else
     echo "$fg[yellow]tmux new"
   fi
-
 fi
