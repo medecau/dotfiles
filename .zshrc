@@ -129,6 +129,11 @@ alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
 
+function take() {
+  mkdir -pv $1
+  cd $1
+}
+
 # ripgrep with Witch Hazel colors
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
 
