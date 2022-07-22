@@ -135,7 +135,7 @@ alias -g and=' && '
 alias -g or=' || '
 
 # basic
-alias g='git'
+alias help='man -P cat'
 
 alias ls='ls -GFh'      # with colors and symbols, human file sizes, and reverse sorted by time
 alias la='ls -a'        # list with hidden files
@@ -153,8 +153,6 @@ function copyfile() {
 }
 alias ff='find . -type f -iname'
 alias pbclear='pbcopy < /dev/null' # clear pasteboard
-alias mancat='man -P cat'          # use cat as the pager
-alias mc=mancat
 alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
@@ -191,17 +189,6 @@ alias kc='kubectl'
 alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
 alias ts='tailscale'
 
-# vscode
-# alias code='/Applications/Visual\ Studio\ Code\ -\ Insiders.app/Contents/Resources/app/bin/code'
-# function rcode() {
-#   code --remote ssh-remote+$1 $2
-# }
-# alias codeconfig="$EDITOR ~/Library/Application Support/Code - Insiders/User/"
-
-# sublime apps
-alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'
-alias smerge='/Applications/Sublime\ Merge.app/Contents/SharedSupport/bin/smerge'
-
 # lua game engines
 alias love="/Applications/love.app/Contents/MacOS/love"
 alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
@@ -209,12 +196,7 @@ alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 # SSH
 alias autossh=autossh -o "ServerAliveInterval 2" -o "ServerAliveCountMax 2"
 alias s='autossh -M 0'
-alias sa='ssh-add'
 alias scp='scp -C' # scp with compression
-
-# age
-alias ageencme='age --encrypt -R ~/.ssh/id_ed25519.pub'
-alias agedecme='age --decrypt -i ~/.ssh/id_ed25519'
 
 # PyEnv
 # list installed but unused pyenv versions
@@ -265,18 +247,6 @@ alias reload='source ~/.zshrc' # reload config
 alias brewup='brew update && brew upgrade'
 alias macosup='softwareupdate -ia --force'
 alias upall='macosup && brewup'
-
-# funk
-function workup() {
-  if [ -f ./pyproject.toml ]; then
-    if [ ! -f ./poetry.lock ]; then
-      poetry lock
-    fi
-    poetry install
-  fi
-  smerge . && code .
-  [ -f ./pyproject.toml ] && poetry shell
-}
 
 # synchronize two, possibly remote, directories
 function syncd() {
