@@ -237,7 +237,7 @@ function playground() {
 
   elif [[ $cmd == 'over' ]]; then
     echo 'Dissolving the playground.'
-    playgrond exit
+    playground exit
     rm -rf $PLAYGROUND
     unset PLAYGROUND
 
