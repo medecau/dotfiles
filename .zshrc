@@ -281,9 +281,10 @@ function timezsh() {
     /usr/bin/time $shell -i -c exit
   done
 }
-alias zshconfig="$EDITOR ~/.zshrc"   # edit config file
-alias ohmyzsh="$EDITOR ~/.oh-my-zsh" # edit config dir
+
+alias zshconfig="$EDITOR ~/.zshrc"
 alias gitconfig="$EDITOR ~/.gitconfig"
+alias sshconfig="$EDITOR ~/.ssh/config"
 alias reload='source ~/.zshrc' # reload config
 
 # maintenance
