@@ -358,7 +358,7 @@ function chpwd() {
   [ -d '.git' ] && echo "$fg[yellow].git"
   [ -f 'Makefile' ] && echo "$fg[yellow]Makefile"
   [ -f 'Dockerfile' ] && echo "$fg[yellow]Dockerfile"
-  [ -f 'docker-compose.yml' ] && echo "$fg[yellow]Dockerfile"
+  [ -f 'docker-compose.yml' ] && echo "$fg[yellow]docker-compose.yml"
   [ -d '.venv' ] && echo "$fg[yellow].venv"
   [ -f 'pyproject.toml' ] && echo "$fg[yellow]pyproject.toml"
 }
