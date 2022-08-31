@@ -67,6 +67,8 @@ if [ -z "$TMUX" ]; then # global environment
 
   export OPENBLAS="$(brew --prefix openblas)"
   export LLVM_CONFIG="$(brew --prefix llvm)/bin/llvm-config"
+  export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
+  export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 fi
 
 # Preferred editor for local and remote sessions
