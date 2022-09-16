@@ -160,6 +160,8 @@ alias vget='yt-dlp'
 alias ap="ansible-playbook"
 alias ai="ansible-inventory"
 
+alias tf=terraform
+
 # container stuff
 alias dk='docker'
 alias dc='docker compose'
