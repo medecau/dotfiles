@@ -294,8 +294,8 @@ alias sshconfig="$EDITOR ~/.ssh/config"
 alias reload='source ~/.zshrc' # reload config
 
 # maintenance
-alias brewup='brew update && brew upgrade'
-alias macosup='softwareupdate -ia --force'
+alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade'
+alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
 alias upall='macosup && brewup'
 
 # synchronize two, possibly remote, directories
