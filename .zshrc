@@ -209,7 +209,7 @@ function playground() {
 
   if [[ $cmd == 'help' ]]; then
     echo 'subcommands:'
-    echo 'start:\tcreate and enter an ephemeral playground'
+    echo 'init:\tcreate and enter an ephemeral playground'
     echo 'enter:\tenter the ephemeral playground'
     echo 'exit:\texit the ephemeral playground'
     echo 'over:\texit and dissolve the ephemeral playground'
