@@ -7,23 +7,10 @@ prompt: enabled
 # A pager program to send command output to, e.g. "less". Set the value to "cat" to disable the pager.
 pager: cat
 # Aliases allow you to create nicknames for gh commands
-aliases:
-    aliases: alias list
-    
-    issues: issue list
-    bugs: issue list --label=bug
-
-    labels: label list
-
-    prs: pr list
-    co: pr checkout
-    
-    runs: run list
-    rerun: run rerun
-    watch: run watch
-    
-    workflows: workflow list
-    
+# put them in ~/.gitignore
+# aliases:
+#     aliases: alias list
+     
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.

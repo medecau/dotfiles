@@ -91,8 +91,18 @@ whoami = config --get user.email
 # github cli
 hub = !gh
 cs = !gh codespace
+label = !gh label
+labels = !gh label list
+
 pr = !gh pr
-prs = !gh prs
+prs = !gh pr list
+review = !gh pr checkout 
+
 issue = !gh issue
-issues = !gh issues
-bugs = !gh bugs
+issues = !gh issue list
+bugs = !gh issue list --label=bug
+
+run = !gh run
+runs = !gh run list
+workflow = !gh workflow
+workflows = !gh workflow list
