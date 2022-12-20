@@ -120,7 +120,7 @@ alias lh='ls -d .*' # only the hidden files
 alias clean='make clean'
 alias test='make test'
 alias dry='make -n'
-alias targets="grep '^[^#[:space:]].*:' Makefile"
+alias targets="grep '^[^#[:space:]\.].*:' Makefile"
 
 alias mkdir='mkdir -pv' # create directory and any missing parent directories
 
