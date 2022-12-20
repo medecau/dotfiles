@@ -96,11 +96,12 @@ labels = !gh label list
 
 pr = !gh pr
 prs = !gh pr list
-review = !gh pr checkout 
+review = !gh pr checkout
 
 issue = !gh issue
 issues = !gh issue list
 bugs = !gh issue list --label=bug
+develop = !gh issue develop
 
 run = !gh run
 runs = !gh run list
