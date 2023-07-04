@@ -59,7 +59,6 @@ brew "watch"
 brew "wget"
 brew "yt-dlp"
 
-cask "basictex"
 cask "docker"
 cask "hex-fiend"
 cask "keka"
