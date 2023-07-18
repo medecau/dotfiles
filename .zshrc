@@ -299,7 +299,7 @@ alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
 alias upall='macosup && brewup'
 
 # synchronize two, possibly remote, directories
-function syncd() {
+function syncdir() {
   echo "Synchronizing $2 with $1"
   # recurse into directories
   # skip files that are newer on the receiver
@@ -317,16 +317,15 @@ function syncd() {
     $1 $2
 }
 
-function 2waysync() {
+function syncdir2() {
   if [ $(basename $1) != $(basename $2) ]; then
     echo 'basename for both paths must match'
     false
   else
     echo "Two way sync between $1 and $2"
-    syncd $1 $(dirname $2)/
-    syncd $2 $(dirname $1)/
+    syncdir $1 $(dirname $2)/
+    syncdir $2 $(dirname $1)/
   fi
-
 }
 
 # dotfiles
