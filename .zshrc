@@ -159,12 +159,20 @@ function calc() {
 
 # yt-dlp
 alias vget='yt-dlp'
+alias aget='vget --extract-audio --audio-format mp3 --audio-quality 4'
+# audio quality – Insert a value between 0 (best) and 10 (worst)
+
+# move the file to the Castro iCloud folder
+function sideload() {
+  mv $1 ~/Library/Mobile\ Documents/iCloud-co-supertop-castro/Documents/Sideloads/
+  echo "Sideloaded $1 to Castro - it should be available in the app soon."
+}
 
 # ansible stuff
-alias ap="ansible-playbook"
-alias ai="ansible-inventory"
+alias ap='ansible-playbook'
+alias ai='ansible-inventory'
 
-alias tf=terraform
+alias tf='terraform'
 
 # container stuff
 alias dk='docker'
