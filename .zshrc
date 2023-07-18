@@ -124,7 +124,7 @@ alias targets="grep '^[^#[:space:]\.].*:' Makefile"
 
 alias mkdir='mkdir -pv' # create directory and any missing parent directories
 
-alias cdb="cd $OLDPWD"
+alias cdb='cd -' # go back to previous directory
 function cdf() {
   target=$(osascript -e 'tell application "Finder" to if (count of Finder windows) > 0 then get POSIX path of (target of front Finder window as text)')
   [ "$target" != "" ] && cd "$target" || echo 'No Finder window found' >&2
