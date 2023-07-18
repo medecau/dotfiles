@@ -296,10 +296,13 @@ function timezsh() {
   done
 }
 
-alias zshconfig="$EDITOR ~/.zshrc"
+alias reload='source ~/.zshrc' # reload config
+
+# easily edit config files
+alias zshconfig="$EDITOR ~/.zshrc && reload"
 alias gitconfig="$EDITOR ~/.gitconfig"
 alias sshconfig="$EDITOR ~/.ssh/config"
-alias reload='source ~/.zshrc' # reload config
+alias brewconfig="$EDITOR ~/Brewfile && brewup"
 
 # maintenance
 alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade'
