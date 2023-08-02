@@ -373,6 +373,12 @@ function chpwd() {
   [ -f 'docker-compose.yml' ] && echo "$fg[yellow]docker-compose.yml"
   [ -d '.venv' ] && echo "$fg[yellow].venv"
   [ -f 'pyproject.toml' ] && echo "$fg[yellow]pyproject.toml"
+
+  # list the 5 most recently modified files
+  # add how long ago they were modified in human readable format
+  ls -t | head -n 5 | while read file; do
+    echo "$fg[white]$(date -r $file '+%Y-%m-%d %H:%M:%S') $fg[green]$file"
+  done
 }
 
 # search history with up/down arrow keys
