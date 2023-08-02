@@ -159,6 +159,11 @@ function calc() {
   python -c "print($@)"
 }
 
+# wget
+function tget() {
+  wget --quiet --output-document - $1 | strip-tags -m
+}
+
 # yt-dlp
 alias vget='yt-dlp'
 alias aget='vget --extract-audio --audio-format mp3 --audio-quality 4'
