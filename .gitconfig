@@ -75,6 +75,7 @@ st = status
 # utils
 lol = !git log --oneline --decorate --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
 lmao =  !git log --oneline --decorate --graph --all --color=always -n $VISIBLE_ROWS  | head -n $VISIBLE_ROWS
+remove-merged = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
 
 news = "!f() { \
 [[ ! -z $1 ]] && \
