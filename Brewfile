@@ -23,6 +23,7 @@ brew "pcre2"
 brew "readline"
 brew "ripgrep"
 brew "sqlite"
+brew "dotnet"
 
 # tools
 ## lang
@@ -60,7 +61,6 @@ brew "yt-dlp"
 
 cask "basictex"
 cask "docker"
-cask "firefox"
 cask "hex-fiend"
 cask "keka"
 cask "obsidian"
