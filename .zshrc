@@ -31,6 +31,7 @@ eval "$(pyenv init --path)"
 
 export PATH="$PATH:$(brew --prefix go)/libexec/bin"
 
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 hash -r
