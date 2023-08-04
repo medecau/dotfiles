@@ -319,6 +319,21 @@ alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgra
 alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
 alias upall='macosup && brewup'
 
+function xfill() {
+  echo "$2 => $1"
+  # recurse into directories
+  # skip files that are newer on the receiver
+  # preserve modification times
+  # connect over ssh
+  # compress data a bit during transfer
+  # entertain me
+  rsync --recursive --update --times \
+    --rsh=ssh \
+    --compress --compress-level=2 \
+    --progress --human-readable --stats \
+    $1 $2
+}
+
 # synchronize two, possibly remote, directories
 function syncdir() {
   echo "Synchronizing $2 with $1"
