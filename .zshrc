@@ -208,6 +208,7 @@ alias pyenv-versions-unref="pyenv versions G -v '^*' G -v 'system' E -E 's/^ +//
 alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
 # uninstall a version by picking from unused versions
 alias pyenv-uninstall='pyenv uninstall $(pyenv-versions-unref F) && pyenv rehash'
+alias pyenv-uninstall-unused='pyenv-versions-unref | xargs -I _ pyenv uninstall -f _'
 # clean up config files from pyenv shims
 alias pyenv-rm-config-files='find ~/.pyenv/shims -name "*-config" -delete'
 
