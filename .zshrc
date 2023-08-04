@@ -203,7 +203,7 @@ alias scp='scp -C' # scp with compression
 
 # PyEnv
 # list installed but unused pyenv versions
-alias pyenv-versions-unref="pyenv versions G -v '^*' E -E 's/^ +//'"
+alias pyenv-versions-unref="pyenv versions G -v '^*' G -v 'system' E -E 's/^ +//'"
 # install version after picking one then rehash pyenv
 alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
 # uninstall a version by picking from unused versions
