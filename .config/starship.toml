@@ -24,3 +24,6 @@ style = "fg:#FF3333"
 success_symbol = "\u2713"
 #symbol = "\uf06a"
 #format = "[$symbol]($style) "
+
+[battery]
+disabled = true
