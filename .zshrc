@@ -424,8 +424,10 @@ elif [ -n "$SSH_CONNECTION" ]; then
   echo "$fg[cyan]SSH sesssion"
   tmux ls &>/dev/null
   if [ $? -eq 0 ]; then
+    echo "$fg[cyan]tmux session found"
     echo "$fg[yellow]tmux a"
   else
+    echo "$fg[cyan]No tmux session found"
     echo "$fg[yellow]tmux new"
   fi
 fi
