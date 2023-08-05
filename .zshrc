@@ -189,7 +189,7 @@ alias mk='minikube'
 alias kc='kubectl'
 
 # tailscale
-alias tailscale='/Applications/Tailscale.app/Contents/MacOS/Tailscale'
+alias tailscale='tailscale -socket /var/run/tailscaled.socket'
 alias ts='tailscale'
 
 # lua game engines
