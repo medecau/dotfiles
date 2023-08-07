@@ -34,7 +34,7 @@ threads = 0
 rebase = true
 
 [push]
-default = current
+default = upstream
 negotiate = true
 
 [rebase]
