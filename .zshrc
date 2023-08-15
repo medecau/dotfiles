@@ -114,7 +114,7 @@ alias -g or=' || '
 alias help='man -P cat'
 
 alias ls='ls -GFh'  # with colors and symbols, human file sizes, and reverse sorted by time
-alias la='ls -a'    # list with hidden files
+alias la='ls -A'    # list with hidden files
 alias ll='la -l'    # list with more info - Long
 alias lh='ls -d .*' # only the hidden files
 
