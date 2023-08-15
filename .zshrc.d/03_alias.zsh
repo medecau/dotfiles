@@ -116,11 +116,6 @@ alias sg-security='semgrep --config="p/secrets" --config="p/command-injection" -
 alias cc='cc -Wall -Werror' # all warnings + warnings are errors
 alias cf='clang-format -i'  # format in-place
 
-# invoke and fabfile
-alias inv='invoke --search-root=$HOME' # invoke for user tasks
-[ -f ~/bin/invoke ] && eval "$(invoke --print-completion-script=zsh)"
-[ -f ~/bin/fab ] && eval "$(fab --print-completion-script=zsh)"
-
 alias zshcheck='zsh -n'        # no execute
 alias reload='source ~/.zshrc' # reload config
 
