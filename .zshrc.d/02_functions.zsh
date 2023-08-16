@@ -12,7 +12,7 @@ function mkdir_and_cd() {
     cd $1
 }
 
-function tget() {
+function fetch-html-page-and-strip-tags() {
     wget --quiet --output-document - $1 | strip-tags -m
 }
 

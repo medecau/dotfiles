@@ -52,6 +52,9 @@ alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:sty
 
 alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
 
+alias hget='wget --quiet --output-document=-'
+alias tget='fetch-html-page-and-strip-tags'
+
 # yt-dlp
 alias vget='yt-dlp'
 alias aget='vget --extract-audio --audio-format mp3 --audio-quality 4'
