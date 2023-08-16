@@ -50,7 +50,9 @@ alias take=mkdir_and_cd
 # ripgrep with Witch Hazel colors
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
 
-alias check='ls ~/.checklists/ F XI bat ~/.checklists/_'
+alias myip='hget https://icanhazip.com'
+alias myipv4='hget https://ipv4.icanhazip.com'
+alias myipv6='hget https://ipv6.icanhazip.com'
 
 alias hget='wget --quiet --output-document=-'
 alias tget='fetch-html-page-and-strip-tags'
