@@ -31,9 +31,11 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 # exports for pyenv
 eval "$(pyenv init --path)"
 
-export PATH="$PATH:$(brew --prefix go)/libexec/bin"
+export PYTHON_CONFIGURE_OPTS='--enable-shared'
+export PYTHONDONTWRITEBYTECODE='tired'
+export PYTHONSTARTUP="$HOME/.repl_startup.py"
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
 
 # We run these on the base shell to avoid the overhead when creating new panels in tmux
 if [ -z "$TMUX" ]; then # global environment
@@ -65,11 +67,20 @@ if [ -z "$TMUX" ]; then # global environment
     -L$HOMEBREW_PREFIX_ZLIB/lib\
     -L$PYENV_PREFIX/lib"
 
+    export CC=/usr/bin/clang
+    export CXX=/usr/bin/clang++
+
     export OPENBLAS="$(brew --prefix openblas)"
     export LLVM_CONFIG="$(brew --prefix llvm)/bin/llvm-config"
     export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
     export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
+
+    export PATH="$PATH:$(brew --prefix go)/libexec/bin"
+    export PATH="$PATH:$HOME/.cargo/bin"
+    export PATH="$PATH:$(brew --prefix ruby)/bin"
 fi
+
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
