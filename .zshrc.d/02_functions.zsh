@@ -13,7 +13,7 @@ function mkdir_and_cd() {
 }
 
 function fetch-html-page-and-strip-tags() {
-    wget --quiet --output-document - $1 | strip-tags -m
+    wget --quiet --output-document - "$1" | strip-tags -m
 }
 
 # move the file to the Castro iCloud folder
