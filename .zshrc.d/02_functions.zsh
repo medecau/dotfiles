@@ -18,7 +18,7 @@ function fetch-html-page-and-strip-tags() {
 
 # move the file to the Castro iCloud folder
 function sideload() {
-    mv $1 ~/Library/Mobile\ Documents/iCloud-co-supertop-castro/Documents/Sideloads/
+    mv $1 $CASTRO_SIDELOADS
     echo "Sideloaded $1 to Castro - it should be available in the app soon."
 }
 

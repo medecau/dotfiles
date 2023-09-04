@@ -35,7 +35,8 @@ export PYTHON_CONFIGURE_OPTS='--enable-shared'
 export PYTHONDONTWRITEBYTECODE='tired'
 export PYTHONSTARTUP="$HOME/.repl_startup.py"
 
-
+export ICLOUD="$HOME/Library/Mobile Documents"
+export CASTRO_SIDELOADS="$ICLOUD/iCloud~co~supertop~castro/Documents/Sideloads"
 
 # We run these on the base shell to avoid the overhead when creating new panels in tmux
 if [ -z "$TMUX" ]; then # global environment
