@@ -16,6 +16,20 @@ function fetch-html-page-and-strip-tags() {
     wget --quiet --output-document - "$1" | strip-tags -m
 }
 
+function blog-to-podcast() {
+    temp_dir=$(mktemp -d)
+    cd $temp_dir
+    fetch-html-page-and-strip-tags $1 >blob.txt
+    title=$(echo $1 | sed -E 's/.*\/([^\/]+)\/?$/\1/')
+    podcastfile=$title.m4a
+    fullpath=$temp_dir/$podcastfile
+    say -f blob.txt -o audio.aiff
+    ffmpeg -i audio.aiff -acodec aac -b:a 128k $podcastfile
+    cd -
+    mv $fullpath .
+    echo $fullpath
+}
+
 # move the file to the Castro iCloud folder
 function sideload() {
     mv $1 $CASTRO_SIDELOADS
