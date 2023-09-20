@@ -77,6 +77,7 @@ if [ -z "$TMUX" ]; then # global environment
     export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 
     export PATH="$PATH:$(brew --prefix go)/libexec/bin"
+    export PATH="$PATH:$(brew --prefix rust)/bin"
     export PATH="$PATH:$HOME/.cargo/bin"
     export PATH="$PATH:$(brew --prefix ruby)/bin"
 fi
