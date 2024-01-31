@@ -1,6 +1,13 @@
 if [[ -z "$SSH_CONNECTION" ]]; then
+    # this is not a SSH connection
+    # we point at the 1password agent
+    # that's a symbolic link btw
     export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
 else
+    # we're connecting over SSH
+    # if SSH did not setup the auth sock env var then
+    # the agent is not being forwarded
+    # in these cases we remind the user of this handicap
     if [[ -z "$SSH_AUTH_SOCK" ]]; then
         echo "$fg[magenta]1password SSH agent is disabled."
         echo "$fg[yellow]You are on a SSH connection without a forwarded agent."

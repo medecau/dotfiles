@@ -10,6 +10,7 @@ eval "$(direnv hook zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-[ -f ~/.hidden.zsh ] && source ~/.hidden.zsh
+# 1password
+[ -f ~/.config/op/plugins.sh ] && source ~/.config/op/plugins.sh
 
 eval "$(starship init zsh)"
