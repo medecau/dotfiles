@@ -23,6 +23,9 @@ alias cdf=change-to-finder-directory
 alias catcopy=copy-file-contents
 alias take=mkdir_and_cd
 
+# invoke
+alias inv='invoke --config=.tasks.yaml'
+
 # basic
 alias help='man -P cat'
 
