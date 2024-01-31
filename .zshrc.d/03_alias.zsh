@@ -18,6 +18,11 @@ alias -g SE=' 2>&1'
 alias -g and=' && '
 alias -g or=' || '
 
+# function aliases
+alias cdf=change-to-finder-directory
+alias catcopy=copy-file-contents
+alias take=mkdir_and_cd
+
 # basic
 alias help='man -P cat'
 
@@ -41,11 +46,6 @@ alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
 
 alias taketmp="cd $(mktemp -d)"
-
-# function aliases
-alias cdf=change-to-finder-directory
-alias catcopy=copy-file-contents
-alias take=mkdir_and_cd
 
 # ripgrep with Witch Hazel colors
 alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
