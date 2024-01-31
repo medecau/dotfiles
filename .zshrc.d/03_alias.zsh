@@ -70,7 +70,12 @@ alias tf='terraform'
 
 # container stuff
 alias dk='docker'
-alias dc='docker compose'
+#check if 'docker-compose' exists as a command, if not, use 'docker compose'
+if command -v docker-compose &>/dev/null; then
+    alias dc='docker-compose'
+else
+    alias dc='docker compose'
+fi
 alias ds='docker stack'
 alias mk='minikube'
 alias kc='kubectl'
