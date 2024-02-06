@@ -5,6 +5,9 @@ email = medecau@gmail.com
 [init]
 defaultBranch = main
 
+[branch]
+autoSetupRebase = always
+
 [core]
 pager = cat
 compression = 9
