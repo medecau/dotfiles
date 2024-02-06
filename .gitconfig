@@ -34,7 +34,8 @@ threads = 0
 rebase = true
 
 [push]
-default = upstream
+autoSetupRemote = true
+default = simple
 negotiate = true
 
 [rebase]
