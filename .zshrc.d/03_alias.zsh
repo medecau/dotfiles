@@ -141,7 +141,8 @@ alias brewconfig="$EDITOR ~/Brewfile && brewup"
 # maintenance
 alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade'
 alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
-alias upall='macosup && brewup'
+alias pipxup='pipx upgrade-all'
+alias upall='macosup && brewup && pipxup'
 
 # dotfiles
 alias dotfiles='git --no-pager --git-dir ~/.dotfiles.git --work-tree ~'
