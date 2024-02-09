@@ -65,6 +65,7 @@ brew "watch"
 brew "wget"
 brew "yt-dlp"
 
+cask "1password-cli"
 cask "docker"
 cask "hex-fiend"
 cask "keka"
