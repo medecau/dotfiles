@@ -1,6 +1,17 @@
-[user]
-name = Pedro Rodrigues
-email = medecau@gmail.com
+# optional includes
+
+# my repos
+[includeIf "gitdir:~/code/mine/"]
+	path = ~/.config/git/config.mine
+
+# work related repositories
+[includeIf "gitdir:~/code/work/"]
+	path = ~/.config/git/config.work
+
+# repositories hostes on github 
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+	path = ~/.config/git/config.github
+
 
 [init]
 defaultBranch = main
@@ -95,22 +106,3 @@ squash = rebase --interactive --autosquash
 update = fetch --all --tags --prune --prune-tags
 whoami = config --get user.email
 
-# github cli
-hub = !gh
-cs = !gh codespace
-label = !gh label
-labels = !gh label list
-
-pr = !gh pr
-prs = !gh pr list
-review = !gh pr checkout
-
-issue = !gh issue
-issues = !gh issue list
-bugs = !gh issue list --label=bug
-develop = !gh issue develop
-
-run = !gh run
-runs = !gh run list
-workflow = !gh workflow
-workflows = !gh workflow list
