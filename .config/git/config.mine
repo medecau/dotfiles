@@ -1,3 +1,6 @@
 [user]
 name = Pedro Rodrigues
 email = medecau@gmail.com
+
+[url "git@me.github.com"]
+insteadOf = git@github.com
