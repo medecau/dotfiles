@@ -13,86 +13,78 @@
 	path = ~/.config/git/config.github
 
 
+# no god, no master
 [init]
-defaultBranch = main
-
-[branch]
-autoSetupRebase = always
+	defaultBranch = main
 
 [core]
-pager = cat
-compression = 9
-looseCompression = 1
-
-[checkout]
-workers = 0
-
-[fetch]
-prune = true
-pruneTags = true
-parallel = 0
-
-[index]
-threads = 0
-
-[grep]
-threads = 0
+	pager = cat
+	compression = 9
+	looseCompression = 1
 
 [merge]
-conflictStyle = diff3
-
-[pack]
-threads = 0
-
-[pull]
-rebase = true
-
-[push]
-autoSetupRemote = true
-default = simple
-negotiate = true
-
-[rebase]
-autoSquash = true
-autoStash = true
+	conflictStyle = diff3
 
 [status]
-branch = true
-short = true
-showUntrackedFiles = no
-showStash = no
+	branch = true
+	short = true
+	showUntrackedFiles = no
+	showStash = no
 
-[submodule]
-fetchJobs = 0
 
+# incoming
+[fetch]
+	prune = true
+	pruneTags = true
+	parallel = 0
+
+[branch]
+	autoSetupRebase = always
+
+[pull]
+	rebase = true
+
+[rebase]
+	autoSquash = true
+	autoStash = true
+
+
+# outgoing
+[push]
+	autoSetupRemote = true
+	default = simple
+	negotiate = true
+
+# large files storage
 [filter "lfs"]
-clean = git-lfs clean -- %f
-smudge = git-lfs smudge -- %f
-process = git-lfs filter-process
-required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
 
 [alias]
-alias = config --global --get-regexp "^alias"
+	alias = config --global --get-regexp "^alias"
 
-# shortcuts
-af = add --force  # add otherwise ignored files
-au = add --update # add only already tracked files
-ap = add --patch
-br = branch
-cm = commit
-cma = commit --amend --no-edit
-cmm = commit --message
-cmf = commit --fixup
-co = checkout
-pop = stash pop
-st = status
+	# shortcuts
+	af = add --force  # add otherwise ignored files
+	au = add --update # add only already tracked files
+	ap = add --patch
+	br = branch
+	cm = commit
+	cma = commit --amend --no-edit
+	cmm = commit --message
+	cmf = commit --fixup
+	co = checkout
+	pop = stash pop
+	st = status
 
 # utils
-lg = log --oneline --regexp-ignore-case --grep
-lo = !git log --oneline --decorate --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
-lol = lo
-lmao =  !git log --oneline --decorate --graph --all --color=always -n $VISIBLE_ROWS  | head -n $VISIBLE_ROWS
-remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
+	lg = log --oneline --regexp-ignore-case --grep
+	lo = !git log --oneline --decorate --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
+	lol = lo
+	lmao =  !git log --oneline --decorate --graph --all --color=always -n $VISIBLE_ROWS  | head -n $VISIBLE_ROWS
+	remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
 
 news = "!f() { \
 [[ ! -z $1 ]] && \
@@ -100,9 +92,24 @@ git log --oneline --graph --since $1 || \
 git log --oneline --graph $(git log -n 1 --author=$(git whoami) --no-merges --format=%H)^..; \
 }; f"
 
-squash = rebase --interactive --autosquash
+	squash = rebase --interactive --autosquash
 
-# fetch branches and tags from all remotes then prune remote tracking branches and tags
-update = fetch --all --tags --prune --prune-tags
-whoami = config --get user.email
+	# fetch branches and tags from all remotes then prune remote tracking branches and tags
+	update = fetch --all --tags --prune --prune-tags
+	whoami = config --get user.email
 
+# cargo cult
+[checkout]
+	workers = 0
+
+[index]
+	threads = 0
+
+[grep]
+	threads = 0
+
+[pack]
+	threads = 0
+
+[submodule]
+	fetchJobs = 0
