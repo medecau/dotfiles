@@ -44,6 +44,10 @@
 [pull]
 	rebase = true
 
+[rerere]
+	enabled = true
+	autoUpdate = true
+
 [rebase]
 	autoSquash = true
 	autoStash = true
