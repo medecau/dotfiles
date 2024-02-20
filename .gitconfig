@@ -22,8 +22,15 @@
 	compression = 9
 	looseCompression = 1
 
+[diff]
+	algorithm = histogram
+
+[log]
+    date = iso
+
 [merge]
-	conflictStyle = diff3
+	conflictStyle = zdiff3
+    keepBackup = false
 
 [status]
 	branch = true
@@ -51,6 +58,7 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
+    updateRefs = true
 
 
 # outgoing
