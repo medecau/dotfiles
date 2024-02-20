@@ -71,35 +71,26 @@
 	alias = config --global --get-regexp "^alias"
 
 	# shortcuts
-	af = add --force  # add otherwise ignored files
-	au = add --update # add only already tracked files
-	ap = add --patch
-	br = branch
-	cm = commit
-	cma = commit --amend --no-edit
-	cmm = commit --message
-	cmf = commit --fixup
-	co = checkout
+	add-updated-files = add --update
 	pop = stash pop
-	st = status
 
-# utils
-	lg = log --oneline --regexp-ignore-case --grep
-	lo = !git log --oneline --decorate --color=always -n $VISIBLE_ROWS | head -n $VISIBLE_ROWS
-	lol = lo
-	lmao =  !git log --oneline --decorate --graph --all --color=always -n $VISIBLE_ROWS  | head -n $VISIBLE_ROWS
-	remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
-
-news = "!f() { \
-[[ ! -z $1 ]] && \
-git log --oneline --graph --since $1 || \
-git log --oneline --graph $(git log -n 1 --author=$(git whoami) --no-merges --format=%H)^..; \
-}; f"
-
+	amend = commit --amend --no-edit --date=now
+	fixup = commit --fixup
 	squash = rebase --interactive --autosquash
+	
+	pushy = push --force-with-lease
+	yolo = pushy --no-verify
 
 	# fetch branches and tags from all remotes then prune remote tracking branches and tags
 	update = fetch --all --tags --prune --prune-tags
+	search = log --oneline --regexp-ignore-case --grep
+	lol = log --oneline --decorate --color=always --reverse
+	recent = branch --sort=-committerdate -v
+
+	remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
+	gui = !smerge .	
+
+	
 	whoami = config --get user.email
 
 # cargo cult
