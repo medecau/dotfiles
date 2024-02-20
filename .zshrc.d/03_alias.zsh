@@ -41,6 +41,7 @@ alias targets="grep '^[^#[:space:]\.].*:' Makefile"
 
 alias rm='rm -I'        # confirm before deleting
 alias mkdir='mkdir -pv' # create directory and any missing parent directories
+alias tac='tail -r'
 
 alias ff='find . -type f -iname'
 alias pbclear='pbcopy < /dev/null' # clear pasteboard
