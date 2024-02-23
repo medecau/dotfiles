@@ -4,6 +4,10 @@
 [includeIf "gitdir:~/code/mine/"]
 	path = ~/.config/git/config.mine
 
+# my dotfiles
+[includeIf "gitdir:~/.git"]
+	path = ~/.config/git/config.mine
+
 # work related repositories
 [includeIf "gitdir:~/code/work/"]
 	path = ~/.config/git/config.work

@@ -135,7 +135,7 @@ alias reload='source ~/.zshrc' # reload config
 
 # easily edit config files
 alias zshconfig="$EDITOR ~/.zshrc ~/.zshrc.d && zshcheck ~/.zshrc && reload"
-alias gitconfig="$EDITOR ~/.gitconfig"
+alias gitconfig="$EDITOR ~/.config/git/"
 alias sshconfig="$EDITOR ~/.ssh/config"
 alias brewconfig="$EDITOR ~/Brewfile && brewup"
 

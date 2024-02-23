@@ -146,10 +146,10 @@ function playground() {
 }
 
 function dfstoggle() {
-    if [ -d ~/.dotfiles.git ]; then
-        mv ~/.dotfiles.git ~/.git
+    if [ -d ~/.git.dfs ]; then
+        mv ~/.git.dfs ~/.git
     elif [ -d ~/.git ]; then
-        mv ~/.git ~/.dotfiles.git
+        mv ~/.git ~/.git.dfs
     fi
 }
 
