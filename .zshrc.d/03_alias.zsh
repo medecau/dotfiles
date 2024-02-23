@@ -146,5 +146,5 @@ alias pipxup='pipx upgrade-all'
 alias upall='macosup && brewup && pipxup'
 
 # dotfiles
-alias dotfiles='git --no-pager --git-dir ~/.dotfiles.git --work-tree ~'
+alias dotfiles='git --no-pager --git-dir ~/.git.dfs --work-tree ~'
 alias dfs='dotfiles'
