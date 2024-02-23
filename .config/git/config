@@ -16,6 +16,8 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
 	path = ~/.config/git/config.github
 
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
 
 # no god, no master
 [init]
