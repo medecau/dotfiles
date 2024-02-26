@@ -2,123 +2,123 @@
 
 # my repos
 [includeIf "gitdir:~/code/mine/"]
-	path = ~/.config/git/config.mine
+    path = ~/.config/git/config.mine
 
 # my dotfiles
 [includeIf "gitdir:~/.git"]
-	path = ~/.config/git/config.mine
+    path = ~/.config/git/config.mine
 
 # work related repositories
 [includeIf "gitdir:~/code/work/"]
-	path = ~/.config/git/config.work
+    path = ~/.config/git/config.work
 
 # repositories hostes on github 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-	path = ~/.config/git/config.github
+    path = ~/.config/git/config.github
 
 [gpg "ssh"]
-	allowedSignersFile = ~/.config/git/allowed_signers
+    allowedSignersFile = ~/.config/git/allowed_signers
 
 # no god, no master
 [init]
-	defaultBranch = main
+    defaultBranch = main
 
 [core]
-	pager = cat
-	compression = 9
-	looseCompression = 1
+    pager = cat
+    compression = 9
+    looseCompression = 1
 
 [diff]
-	algorithm = histogram
+    algorithm = histogram
 
 [log]
     date = iso
 
 [merge]
-	conflictStyle = zdiff3
+    conflictStyle = zdiff3
     keepBackup = false
 
 [status]
-	branch = true
-	short = true
-	showUntrackedFiles = no
-	showStash = no
+    branch = true
+    short = true
+    showUntrackedFiles = no
+    showStash = no
 
 
 # incoming
 [fetch]
-	prune = true
-	pruneTags = true
-	parallel = 0
+    prune = true
+    pruneTags = true
+    parallel = 0
 
 [branch]
-	autoSetupRebase = always
+    autoSetupRebase = always
 
 [pull]
-	rebase = true
+    rebase = true
 
 [rerere]
-	enabled = true
-	autoUpdate = true
+    enabled = true
+    autoUpdate = true
 
 [rebase]
-	autoSquash = true
-	autoStash = true
+    autoSquash = true
+    autoStash = true
     updateRefs = true
 
 
 # outgoing
 [push]
-	autoSetupRemote = true
-	default = simple
-	negotiate = true
+    autoSetupRemote = true
+    default = simple
+    negotiate = true
 
 # large files storage
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
 
 [alias]
     alias = config --includes --get-regexp "^alias"
 
-	# shortcuts
-	add-updated-files = add --update
-	pop = stash pop
+    # shortcuts
+    add-updated-files = add --update
+    pop = stash pop
 
-	amend = commit --amend --no-edit --date=now
-	fixup = commit --fixup
-	squash = rebase --interactive --autosquash
-	
-	pushy = push --force-with-lease
-	yolo = pushy --no-verify
+    amend = commit --amend --no-edit --date=now
+    fixup = commit --fixup
+    squash = rebase --interactive --autosquash
+    
+    pushy = push --force-with-lease
+    yolo = pushy --no-verify
 
-	# fetch branches and tags from all remotes then prune remote tracking branches and tags
-	update = fetch --all --tags --prune --prune-tags
-	search = log --oneline --regexp-ignore-case --grep
-	lol = log --oneline --decorate --color=always --reverse
-	recent = branch --sort=-committerdate -v
+    # fetch branches and tags from all remotes then prune remote tracking branches and tags
+    update = fetch --all --tags --prune --prune-tags
+    search = log --oneline --regexp-ignore-case --grep
+    lol = log --oneline --decorate --color=always --reverse
+    recent = branch --sort=-committerdate -v
 
-	remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
-	gui = !smerge .	
+    remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
+    gui = !smerge . 
 
-	
-	whoami = config --get user.email
+    
+    whoami = config --get user.email
 
 # cargo cult
 [checkout]
-	workers = 0
+    workers = 0
 
 [index]
-	threads = 0
+    threads = 0
 
 [grep]
-	threads = 0
+    threads = 0
 
 [pack]
-	threads = 0
+    threads = 0
 
 [submodule]
-	fetchJobs = 0
+    fetchJobs = 0

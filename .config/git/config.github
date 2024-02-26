@@ -1,23 +1,23 @@
 [push]
-negotiate = false
+    negotiate = false
 
 [alias]
-# github cli
-hub = !gh
-cs = !gh codespace
-label = !gh label
-labels = !gh label list
+    # github cli
+    hub = !gh
+    cs = !gh codespace
+    label = !gh label
+    labels = !gh label list
 
-pr = !gh pr
-prs = !gh pr list
-review = !gh pr checkout
+    pr = !gh pr
+    prs = !gh pr list
+    review = !gh pr checkout
 
-issue = !gh issue
-issues = !gh issue list
-bugs = !gh issue list --label=bug
-develop = !gh issue develop
+    issue = !gh issue
+    issues = !gh issue list
+    bugs = !gh issue list --label=bug
+    develop = !gh issue develop
 
-run = !gh run
-runs = !gh run list
-workflow = !gh workflow
-workflows = !gh workflow list
+    run = !gh run
+    runs = !gh run list
+    workflow = !gh workflow
+    workflows = !gh workflow list
