@@ -1,5 +1,5 @@
 function preexec() {
-    export VISIBLE_ROWS=$(($LINES - $PROMPT_ROWS * 2))
+    export VISIBLE_ROWS=$(($LINES - $PROMPT_ROWS * 2 + 1))
 }
 
 function chpwd() {
