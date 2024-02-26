@@ -82,7 +82,7 @@
 
 
 [alias]
-	alias = config --global --get-regexp "^alias"
+    alias = config --includes --get-regexp "^alias"
 
 	# shortcuts
 	add-updated-files = add --update
