@@ -146,7 +146,8 @@ alias pipxup='pipx upgrade-all'
 alias upall='macosup && brewup && pipxup'
 
 # other
-alias teams-ran-into-an-issue='pkill -9 "Microsoft Teams" && sleep 5 && rm -Irf ~/Library/Application\ Support/Microsoft/Teams && open -n /Applications/Microsoft\ Teams.app'
+alias fix-ms-team='pkill -9 "Microsoft Teams" && sleep 5 && rm -Irf ~/Library/Application\ Support/Microsoft/Teams && open -n /Applications/Microsoft\ Teams.app'
+alias fix-dns='sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder'
 
 # dotfiles
 alias dotfiles='git --no-pager --git-dir ~/.git.dfs --work-tree ~'
