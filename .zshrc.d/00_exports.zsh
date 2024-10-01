@@ -48,6 +48,7 @@ if [ -z "$TMUX" ]; then # global environment
     export HOMEBREW_PREFIX_SQLITE3="$(brew --prefix sqlite3)"
     export HOMEBREW_PREFIX_XZ="$(brew --prefix xz)"
     export HOMEBREW_PREFIX_ZLIB="$(brew --prefix zlib)"
+    export HOMEBREW_PREFIX_OPENBLAS="$(brew --prefix openblas)"
 
     export PYENV_PREFIX="$(pyenv prefix)"
 
@@ -57,7 +58,9 @@ if [ -z "$TMUX" ]; then # global environment
     -I$HOMEBREW_PREFIX_SQLITE3/include \
     -I$HOMEBREW_PREFIX_XZ/include\
     -I$HOMEBREW_PREFIX_ZLIB/include\
+    -I$HOMEBREW_PREFIX_OPENBLAS/include\
     -I$PYENV_PREFIX/include"
+    
     export CPPFLAGS="$CFLAGS"
 
     export LDFLAGS="-L$HOMEBREW_PREFIX_BZIP2/lib\
@@ -66,12 +69,15 @@ if [ -z "$TMUX" ]; then # global environment
     -L$HOMEBREW_PREFIX_SQLITE3/lib\
     -L$HOMEBREW_PREFIX_XZ/lib\
     -L$HOMEBREW_PREFIX_ZLIB/lib\
+    -L$HOMEBREW_PREFIX_OPENBLAS/lib\
     -L$PYENV_PREFIX/lib"
 
     export CC=/usr/bin/clang
     export CXX=/usr/bin/clang++
 
     export OPENBLAS="$(brew --prefix openblas)"
+    export CFLAGS="-falign-functions=8 ${CFLAGS}" # OpenBLAS
+
     export LLVM_CONFIG="$(brew --prefix llvm)/bin/llvm-config"
     export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL=1
     export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
