@@ -1,18 +1,9 @@
+[url "git@me.github.com"]
+    insteadOf = git@github.com
+    
 [user]
     name = Pedro Rodrigues
     email = medecau@gmail.com
 
-[url "git@me.github.com"]
-    insteadOf = git@github.com
-
 [user]
     signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMbzJBny8oR6A+matElwu4EaEiAluhpOKBirfZKc1wln
-
-[gpg]
-    format = ssh
-
-[gpg "ssh"]
-    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
-[commit]
-    gpgsign = true

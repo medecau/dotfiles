@@ -11,7 +11,6 @@ alias -g CL=' | wc -l'
 
 # fancy globals
 alias -g C=' | pbcopy'
-alias -g F=' | fzf --multi'
 alias -g XI=' | xargs -I _'
 alias -g NE=' 2>/dev/null'
 alias -g SE=' 2>&1'
@@ -34,6 +33,7 @@ alias la='ls -A1'  # list with hidden files
 alias ll='ls -Al'  # list with more info - Long
 
 # Makefile
+alias run='make run'
 alias clean='make clean'
 alias test='make test'
 alias dry='make -n'
@@ -85,7 +85,6 @@ alias mk='minikube'
 alias kc='kubectl'
 
 # tailscale
-alias tailscale='tailscale -socket /var/run/tailscaled.socket'
 alias ts='tailscale'
 
 # lua game engines

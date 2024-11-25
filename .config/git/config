@@ -1,23 +1,4 @@
-# optional includes
-
-# my repos
-[includeIf "gitdir:~/code/mine/"]
-    path = ~/.config/git/config.mine
-
-# my dotfiles
-[includeIf "gitdir:~/.git"]
-    path = ~/.config/git/config.mine
-
-# work related repositories
-[includeIf "gitdir:~/code/work/"]
-    path = ~/.config/git/config.work
-
-# repositories hostes on github 
-[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
-    path = ~/.config/git/config.github
-
-[gpg "ssh"]
-    allowedSignersFile = ~/.config/git/allowed_signers
+# last one wins
 
 # no god, no master
 [init]
@@ -85,26 +66,26 @@
     alias = config --includes --get-regexp "^alias"
 
     # shortcuts
-    add-updated-files = add --update
+    dev = "!f() { git switch -c \"dev/$1\"; }; f"
     pop = stash pop
-
     amend = commit --amend --no-edit --date=now
     fixup = commit --fixup
     squash = rebase --interactive --autosquash
-    
     pushy = push --force-with-lease
     yolo = pushy --no-verify
-
+    
     # fetch branches and tags from all remotes then prune remote tracking branches and tags
     update = fetch --all --tags --prune --prune-tags
+
     search = log --oneline --regexp-ignore-case --grep
     lol = log --oneline --decorate --color=always --reverse
     recent = branch --sort=-committerdate -v
 
+    # remove all branches that are already merged
     remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
-    gui = !smerge . 
-
     
+    gui = !smerge .
+
     whoami = config --get user.email
 
 # cargo cult
@@ -122,3 +103,30 @@
 
 [submodule]
     fetchJobs = 0
+
+# optional includes
+
+# repositories hostes on github 
+[includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
+    path = ~/.config/git/config.github
+
+# my repos
+[includeIf "hasconfig:remote.*.url:git@github.com:medecau/**"]
+    path = ~/.config/git/config.mine
+
+# work repos go in hidden
+[include]
+    path = ~/.config/git/config.hidden
+
+# gpg
+[gpg]
+    format = ssh
+
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+
+[commit]
+    gpgsign = true
+
+[gpg "ssh"]
+    allowedSignersFile = ~/.config/git/allowed_signers
