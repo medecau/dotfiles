@@ -6,18 +6,30 @@
 
 [core]
     pager = cat
+    compression = 1
+    looseCompression = 1  # objects not in a pack file
+
+[pack]
+    # A packed archive is an efficient way to transfer a set of objects between two repositories as well as an access efficient archival format.
+    # https://git-scm.com/docs/git-pack-objects#_description
     compression = 9
-    looseCompression = 1
 
 [diff]
+    # This algorithm extends the patience algorithm to "support low-occurrence common elements".
+    # Use "patience diff" algorithm when generating patches.
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-codehistogramcode
     algorithm = histogram
 
 [log]
+    # no silly dates please
     date = iso
 
 [merge]
+    # The default is "merge", which shows a <<<<<<< conflict marker, changes made by one side, a ======= marker, changes made by the other side, and then a >>>>>>> marker.
+    # An alternate style, "diff3", adds a ||||||| marker and the original text before the ======= marker. [...]
+    # Another alternate style, "zdiff3", is similar to diff3 but removes matching lines on the two sides from the conflict region when those matching lines appear near either the beginning or end of a conflict region.
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergeconflictStyle
     conflictStyle = zdiff3
-    keepBackup = false
 
 [status]
     branch = true
