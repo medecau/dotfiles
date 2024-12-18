@@ -139,7 +139,7 @@ alias sshconfig="$EDITOR ~/.ssh/config"
 alias brewconfig="$EDITOR ~/Brewfile && brewup"
 
 # maintenance
-alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade'
+alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade && brew cleanup'
 alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
 alias pipxup='pipx upgrade-all'
 alias upall='macosup && brewup && pipxup'
