@@ -138,7 +138,7 @@
     program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
 
 [commit]
-    gpgsign = true
+    gpgsign = false
 
 [gpg "ssh"]
     allowedSignersFile = ~/.config/git/allowed_signers
