@@ -4,6 +4,7 @@ unset LC_ALL
 
 # opt out of tracking
 export DO_NOT_TRACK=1
+export DISABLE_TELEMETRY=YES
 export HOMEBREW_NO_ANALYTICS=1        # Homebrew
 export DOTNET_CLI_TELEMETRY_OPTOUT=1  # .NET CLI
 export GATSBY_TELEMETRY_DISABLED=1    # Gatsby
@@ -15,6 +16,7 @@ export MEILI_NO_SENTRY=1
 export OTEL_SDK_DISABLED=1            # opentelemetry - crewai
 export SOURCEBOT_TELEMETRY_DISABLED=1              # SOURCEBOT
 export NEXT_PUBLIC_SOURCEBOT_TELEMETRY_DISABLED=1
+export AIDER_ANALYTICS_DISABLE=1
 # semgrep metrics are disabled in alias
 
 # history
