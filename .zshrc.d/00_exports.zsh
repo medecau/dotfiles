@@ -65,7 +65,8 @@ export CXX=/usr/bin/clang++
 
 export CFLAGS="-falign-functions=8 ${CFLAGS}" # OpenBLAS
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
