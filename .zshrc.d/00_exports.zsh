@@ -80,12 +80,9 @@ export ICLOUD="$HOME/Library/Mobile Documents"
 export CASTRO_SIDELOADS="$ICLOUD/iCloud~co~supertop~castro/Documents/Sideloads"
 
 # remove duplicates
-typeset -U PATH
-typeset -T LIBRARY_PATH library_path
-typeset -U LIBRARY_PATH
-typeset -T LD_LIBRARY_PATH ld_library_path
-typeset -U LD_LIBRARY_PATH
-# "if you want to extend this to something else like the LD_LIBRARY_PATH, you can associate the list to an array before cleaning"
-# https://stackoverflow.com/a/77537031/128682
+# 'fix-path' is ~/bin/fix-path
+export PATH=$(fix-path $PATH)
+export LIBRARY_PATH=$(fix-path $LIBRARY_PATH)
+export LD_LIBRARY_PATH=$(fix-path $LD_LIBRARY_PATH)
 
 hash -r
