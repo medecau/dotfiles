@@ -52,7 +52,11 @@ alias treedu='tree -d --du -h'
 alias taketmp="cd $(mktemp -d)"
 
 # ripgrep with Witch Hazel colors
-alias rg='rg --colors=match:style:nobold --colors=match:fg:218 --colors=line:style:nobold --colors=line:fg:121 --colors=path:fg:183'
+alias rg='rg \
+    --no-ignore-vcs \
+    --colors=match:fg:218 \
+    --colors=line:fg:121 \
+    --colors=path:fg:183'
 
 alias myip='hget https://icanhazip.com'
 alias myipv4='hget https://ipv4.icanhazip.com'
@@ -123,6 +127,9 @@ alias vera='verm; veia'        # recreate
 alias semgrep='semgrep --disable-version-check --metrics=off'
 alias sg-python='semgrep --config="p/ci" --config="p/python"'
 alias sg-security='semgrep --config="p/secrets" --config="p/command-injection" --config="p/supply-chain" --config="p/trailofbits" --config="p/github-actions" --config="p/security-audit"'
+
+# anthropic claude
+alias claude='claude --allowedTools="Bash(ls:*),Bash(rg:*),Bash(git status:*),Bash(git log:*)"'
 
 # C lang
 alias cc='cc -Wall -Werror' # all warnings + warnings are errors
