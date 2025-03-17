@@ -49,7 +49,7 @@ alias www='python -m http.server'
 alias treedirs='tree -d'
 alias treedu='tree -d --du -h'
 
-alias taketmp="cd $(mktemp -d)"
+alias taketmp='cd $(mktemp -d)'
 
 # ripgrep with Witch Hazel colors
 alias rg='rg \
