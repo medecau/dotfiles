@@ -118,7 +118,6 @@ touch main.py utils.py notes.md'
 alias verm='ved; rm -rf .venv' # remove
 alias vera='verm; veia'        # recreate
 
-alias pg=playground
 
 # semgrep
 alias semgrep='semgrep --disable-version-check --metrics=off'
