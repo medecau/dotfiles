@@ -1,35 +1,41 @@
 # last one wins
 
-# no god, no master
-[init]
-    defaultBranch = main
 
-[core]
-    pager = cat
-    compression = 1
-    looseCompression = 1  # objects not in a pack file
+# aliases
+[alias]
+    alias = config --includes --get-regexp "^alias"
 
-[pack]
-    # A packed archive is an efficient way to transfer a set of objects between two repositories as well as an access efficient archival format.
-    # https://git-scm.com/docs/git-pack-objects#_description
-    compression = 9
+    # Branching and workflow
+    dev = "!f() { git switch -c \"dev/$1\"; }; f"
+    recent = branch --sort=-committerdate -v
+    remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
+    
+    # Commit manipulation
+    amend = commit --amend --no-edit --date=now
+    fixup = commit --fixup
+    squash = rebase --interactive --autosquash
+    
+    # Stash operations
+    pop = stash pop
+    
+    # Push operations
+    pushy = push --force-with-lease
+    yolo = pushy --no-verify
+    
+    # Fetch/update operations
+    update = fetch --all --tags --prune --prune-tags
+    
+    # Log and search
+    search = log --oneline --regexp-ignore-case --grep
+    lol = log --oneline --decorate --color=always --reverse
+    
+    # Tools and utilities
+    gui = !smerge .
+    whoami = config --get user.email
 
-[diff]
-    # This algorithm extends the patience algorithm to "support low-occurrence common elements".
-    # Use "patience diff" algorithm when generating patches.
-    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-codehistogramcode
-    algorithm = histogram
-
+# display and output
 [log]
-    # no silly dates please
-    date = iso
-
-[merge]
-    # The default is "merge", which shows a <<<<<<< conflict marker, changes made by one side, a ======= marker, changes made by the other side, and then a >>>>>>> marker.
-    # An alternate style, "diff3", adds a ||||||| marker and the original text before the ======= marker. [...]
-    # Another alternate style, "zdiff3", is similar to diff3 but removes matching lines on the two sides from the conflict region when those matching lines appear near either the beginning or end of a conflict region.
-    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergeconflictStyle
-    conflictStyle = zdiff3
+    date = iso # no silly dates please
 
 [status]
     branch = true
@@ -37,70 +43,88 @@
     showUntrackedFiles = no
     showStash = no
 
+[branch]
+    sort = -committerdate
 
-# incoming
+[column]
+    ui = auto # testing the vibes of this one
+
+[core]
+    pager = cat
+
+# basic settings
+[init]
+    # no god, no master
+    defaultBranch = main
+
+# diff and merge
+[diff]
+    # Use "patience diff" algorithm when generating patches
+    # This algorithm extends the patience algorithm to "support low-occurrence common elements"
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-codehistogramcode
+    algorithm = histogram
+
+[merge]
+    # zdiff3 adds original text markers and removes matching lines from conflict regions
+    # https://git-scm.com/docs/git-config#Documentation/git-config.txt-mergeconflictStyle
+    conflictStyle = zdiff3
+    autoStash = true
+
+# workflow settings
+# Fetch & pull behavior
 [fetch]
     prune = true
     pruneTags = true
     parallel = 0
 
-[branch]
-    autoSetupRebase = always
-
 [pull]
     rebase = true
 
-[rerere]
-    enabled = true
-    autoUpdate = true
-
+# Handle rebasing
 [rebase]
     autoSquash = true
     autoStash = true
     updateRefs = true
 
+# Remember resolved conflicts
+[rerere]
+    enabled = true
+    autoUpdate = true
 
-# outgoing
+# Push behavior
 [push]
     autoSetupRemote = true
     default = simple
     negotiate = true
 
-# large files storage
-[filter "lfs"]
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
-    process = git-lfs filter-process
-    required = true
+# Commented out settings
+# branch.autoSetupRebase = always
+# yea, we don't always want to rebase. guess i'm learning nuance
 
+# signing
+[gpg]
+    format = ssh
 
-[alias]
-    alias = config --includes --get-regexp "^alias"
+[gpg "ssh"]
+    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
+    allowedSignersFile = ~/.config/git/allowed_signers
 
-    # shortcuts
-    dev = "!f() { git switch -c \"dev/$1\"; }; f"
-    pop = stash pop
-    amend = commit --amend --no-edit --date=now
-    fixup = commit --fixup
-    squash = rebase --interactive --autosquash
-    pushy = push --force-with-lease
-    yolo = pushy --no-verify
-    
-    # fetch branches and tags from all remotes then prune remote tracking branches and tags
-    update = fetch --all --tags --prune --prune-tags
+[commit]
+    gpgsign = false
 
-    search = log --oneline --regexp-ignore-case --grep
-    lol = log --oneline --decorate --color=always --reverse
-    recent = branch --sort=-committerdate -v
+# performance
+[core]
+    compression = 1
+    looseCompression = 1 # objects not in a pack file
 
-    # remove all branches that are already merged
-    remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
-    
-    gui = !smerge .
+[pack]
+    compression = 9 # objects in a pack file
+    threads = 0    # use all available threads
 
-    whoami = config --get user.email
+# A packed archive is an efficient way to transfer a set of objects between repositories
+# https://git-scm.com/docs/git-pack-objects#_description
 
-# cargo cult
+# Maximize parallelization for better performance
 [checkout]
     workers = 0
 
@@ -110,15 +134,19 @@
 [grep]
     threads = 0
 
-[pack]
-    threads = 0
-
 [submodule]
     fetchJobs = 0
 
-# optional includes
+# extensions
+# Large files storage
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
 
-# repositories hostes on github 
+# includes (must be at the end)
+# repositories hosted on github 
 [includeIf "hasconfig:remote.*.url:git@github.com:*/**"]
     path = ~/.config/git/config.github
 
@@ -129,16 +157,3 @@
 # work repos go in hidden
 [include]
     path = ~/.config/git/config.hidden
-
-# gpg
-[gpg]
-    format = ssh
-
-[gpg "ssh"]
-    program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign"
-
-[commit]
-    gpgsign = false
-
-[gpg "ssh"]
-    allowedSignersFile = ~/.config/git/allowed_signers
