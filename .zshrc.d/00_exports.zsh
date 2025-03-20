@@ -46,9 +46,13 @@ export PYTHONSTARTUP="$HOME/.repl_startup.py"
 # common paths
 local HOMEBREW_PREFIX="$(brew --prefix)"
 
-export LDFLAGS="-L $HOMEBREW_PREFIX/lib:$LDFLAGS"
-export CFLAGS="-I $HOMEBREW_PREFIX/include:$CFLAGS"
-export CPPFLAGS="-I $HOMEBREW_PREFIX/include:$CPPFLAGS"
+# Reset flags to eliminate corruption
+unset LDFLAGS CFLAGS CPPFLAGS
+
+# Set flags with proper spacing
+export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+export CFLAGS="-I$HOMEBREW_PREFIX/include"
+export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
 
 export LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$LIBRARY_PATH"
 export LD_LIBRARY_PATH="$HOMEBREW_PREFIX/lib:$LD_LIBRARY_PATH"
@@ -63,7 +67,7 @@ export GRPC_PYTHON_BUILD_SYSTEM_ZLIB=1
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 
-export CFLAGS="-falign-functions=8 ${CFLAGS}" # OpenBLAS
+export CFLAGS="$CFLAGS -falign-functions=8" # OpenBLAS
 
 export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
