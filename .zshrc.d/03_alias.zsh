@@ -122,14 +122,10 @@ touch main.py utils.py notes.md'
 alias verm='ved; rm -rf .venv' # remove
 alias vera='verm; veia'        # recreate
 
-
 # semgrep
 alias semgrep='semgrep --disable-version-check --metrics=off'
 alias sg-python='semgrep --config="p/ci" --config="p/python"'
 alias sg-security='semgrep --config="p/secrets" --config="p/command-injection" --config="p/supply-chain" --config="p/trailofbits" --config="p/github-actions" --config="p/security-audit"'
-
-# anthropic claude
-alias claude='claude --allowedTools="Bash(ls:*),Bash(rg:*),Bash(git status:*),Bash(git log:*)"'
 
 # C lang
 alias cc='cc -Wall -Werror' # all warnings + warnings are errors
@@ -143,6 +139,7 @@ alias zshconfig="$EDITOR ~/.zshrc ~/.zshrc.d && zshcheck ~/.zshrc && reload"
 alias gitconfig="$EDITOR ~/.config/git/"
 alias sshconfig="$EDITOR ~/.ssh/config"
 alias brewconfig="$EDITOR ~/Brewfile && brewup"
+alias claudeconfig="$EDITOR ~/.claude"
 
 # maintenance
 alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade && brew cleanup'
