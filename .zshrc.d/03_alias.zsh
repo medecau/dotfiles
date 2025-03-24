@@ -58,6 +58,8 @@ alias rg='rg \
     --colors=line:fg:121 \
     --colors=path:fg:183'
 
+alias cl=claude
+
 alias myip='hget https://icanhazip.com'
 alias myipv4='hget https://ipv4.icanhazip.com'
 alias myipv6='hget https://ipv6.icanhazip.com'
