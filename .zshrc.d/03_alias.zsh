@@ -1,21 +1,17 @@
 # globals
 alias -g H=' | head'
 alias -g T=' | tail'
-alias -g E=' | sed'
 alias -g S=' | sort'
 alias -g U=' | uniq'
 alias -g G=' | grep -i'
-alias -g L=' | less'
-alias -g X=' | xargs'
 alias -g CL=' | wc -l'
 
 # fancy globals
+alias -g F=' | fzf'
 alias -g C=' | pbcopy'
 alias -g XI=' | xargs -I _'
 alias -g NE=' 2>/dev/null'
 alias -g SE=' 2>&1'
-alias -g and=' && '
-alias -g or=' || '
 
 # function aliases
 alias cdf=change-to-finder-directory

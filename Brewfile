@@ -12,6 +12,7 @@ brew "zlib"
 brew "zstd"
 
 ## other
+brew "duckdb"
 brew "curl"
 brew "fzf"
 brew "icu4c"
