@@ -120,6 +120,8 @@ touch main.py utils.py notes.md'
 alias verm='ved; rm -rf .venv' # remove
 alias vera='verm; veia'        # recreate
 
+alias vea-poetry='eval "$(poetry env activate)"' # this is so fucking cursed
+
 # semgrep
 alias semgrep='semgrep --disable-version-check --metrics=off'
 alias sg-python='semgrep --config="p/ci" --config="p/python"'
