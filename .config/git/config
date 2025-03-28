@@ -8,8 +8,6 @@
     # Branching and workflow
     dev = "!f() { git switch -c \"dev/$1\"; }; f"
     fix = "!f() { git switch -c \"fix/$1\"; }; f"
-    recent = branch --sort=-committerdate -v
-    remove-merged-branches = !git branch --merged | egrep -v \"(^\\*|master|main)\" | xargs -r git branch -d
     
     # Commit manipulation
     amend = commit --amend --no-edit --date=now
@@ -18,6 +16,10 @@
     
     # Stash operations
     pop = stash pop
+    
+    # Reset operations
+    nuke = "!git stash && git reset --hard"
+    refocus = "!git stash && git switch $(git config --get init.defaultBranch)"
     
     # Push operations
     pushy = push --force-with-lease
