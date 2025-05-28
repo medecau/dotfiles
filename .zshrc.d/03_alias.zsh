@@ -54,7 +54,7 @@ alias rg='rg \
     --colors=line:fg:121 \
     --colors=path:fg:183'
 
-alias cl=claude
+alias cl='MAX_THINKING_TOKENS=20000 claude'
 
 alias myip='hget https://icanhazip.com'
 alias myipv4='hget https://ipv4.icanhazip.com'
