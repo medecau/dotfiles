@@ -3,6 +3,7 @@ bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
 setopt extendedhistory
+setopt inc_append_history_time
 setopt sharehistory
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
