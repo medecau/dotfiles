@@ -17,7 +17,7 @@ fi
 
 if [[ -z "$TMUX" && -z "$SSH_CONNECTION" ]]; then
     echo 'Starting tmux'
-    tmux attach || tmux new-session
+    tmux new-session -A
 elif [ -n "$SSH_CONNECTION" ]; then
     echo "$fg[cyan]SSH sesssion"
     tmux ls &>/dev/null
