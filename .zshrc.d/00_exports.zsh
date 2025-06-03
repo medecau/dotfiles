@@ -74,6 +74,12 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
+# Claude Code
+export PATH="$PATH:~/.claude/local/"
+
+# Windsurf
+export PATH="$PATH:~/.codeium/windsurf/bin"
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
