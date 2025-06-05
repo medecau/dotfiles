@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 # libs
 ## compression
 brew "brotli"
