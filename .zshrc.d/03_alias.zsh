@@ -55,6 +55,7 @@ alias rg='rg \
     --colors=path:fg:183'
 
 alias cl='claude'
+alias claude="~/.claude/local/claude"
 
 alias myip='hget https://icanhazip.com'
 alias myipv4='hget https://ipv4.icanhazip.com'
