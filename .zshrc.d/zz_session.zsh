@@ -17,7 +17,8 @@ fi
 
 if [[ -z "$TMUX" && -z "$SSH_CONNECTION" ]]; then
     echo 'Starting tmux'
-    tmux new-session -A
+    # Try to attach to the first available session, create new if none exist
+    tmux attach-session 2>/dev/null || tmux new-session
 elif [ -n "$SSH_CONNECTION" ]; then
     echo "$fg[cyan]SSH sesssion"
     tmux ls &>/dev/null
