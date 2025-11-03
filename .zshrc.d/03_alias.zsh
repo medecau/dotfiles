@@ -99,17 +99,6 @@ alias autossh=autossh -o 'ServerAliveInterval 2' -o 'ServerAliveCountMax 2'
 alias s='autossh -M 0'
 alias scp='scp -C' # scp with compression
 
-# PyEnv
-# list installed but unused pyenv versions
-alias pyenv-versions-unref="pyenv versions G -v '^*' G -v 'system' E -E 's/^ +//'"
-# install version after picking one then rehash pyenv
-alias pyenv-install='pyenv install $(pyenv install -l F) && pyenv rehash'
-# uninstall a version by picking from unused versions
-alias pyenv-uninstall='pyenv uninstall $(pyenv-versions-unref F) && pyenv rehash'
-alias pyenv-uninstall-unused='pyenv-versions-unref | xargs -I _ pyenv uninstall -f _'
-# clean up config files from pyenv shims
-alias pyenv-rm-config-files='find ~/.pyenv/shims -name "*-config" -delete'
-
 # Python virtualenv
 alias ve='virtualenv'
 alias vei='ve .venv'                  # init

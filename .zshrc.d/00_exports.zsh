@@ -32,12 +32,6 @@ export PATH=/opt/homebrew/bin:/usr/local/bin:$PATH
 # and this bootstraps homebrew
 eval "$(brew shellenv)"
 
-# exports for pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-# exports for pyenv
-eval "$(pyenv init --path)"
-
 # python
 export PYTHON_CONFIGURE_OPTS='--enable-shared'
 export PYTHONDONTWRITEBYTECODE='tired'
