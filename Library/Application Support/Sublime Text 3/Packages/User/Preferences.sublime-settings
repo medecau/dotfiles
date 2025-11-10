@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Packages/User/witchhazelhypercolor.tmTheme",
+	"font_size": 14,
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"index_files": true,
+}

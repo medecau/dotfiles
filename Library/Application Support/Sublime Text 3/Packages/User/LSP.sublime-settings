@@ -1,0 +1,19 @@
+{
+	"clients": {
+		"pyright": {
+			"settings": {
+				// Auto-detect virtual environments in project folder
+				"python.venvPath": "${folder}",
+				// Enable auto-search for Python paths
+				"python.analysis.autoSearchPaths": true,
+				// Use library code for better type hints
+				"python.analysis.useLibraryCodeForTypes": true,
+				// Suppress common warnings
+				"python.analysis.diagnosticSeverityOverrides": {
+					"reportMissingTypeStubs": "none",
+				},
+			},
+			"enabled": true,
+		},
+	},
+}
