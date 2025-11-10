@@ -54,7 +54,6 @@ alias rg='rg \
     --colors=line:fg:121 \
     --colors=path:fg:183'
 
-alias claude="$HOME/.claude/local/claude"
 alias cl='claude'
 
 alias myip='hget https://icanhazip.com'
