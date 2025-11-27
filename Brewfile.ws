@@ -26,7 +26,6 @@ brew "ripgrep"
 brew "shellcheck"
 brew "sqlite"
 
-
 # tools
 ## lang
 brew "go"
@@ -77,7 +76,6 @@ cask "font-jetbrains-mono-nerd-font"
 cask "font-open-dyslexic-nerd-font"
 cask "ghostty"
 cask "keka"
-cask "love"
 cask "macfuse"
 cask "netnewswire"
 cask "sublime-merge"

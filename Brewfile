@@ -19,7 +19,6 @@ brew "readline"
 brew "ripgrep"
 brew "sqlite"
 
-
 # tools
 ## lang
 brew "go"
