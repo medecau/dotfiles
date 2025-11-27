@@ -68,9 +68,6 @@ export PATH="$JAVA_HOME/bin:$PATH"
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-# Claude Code
-export PATH="$PATH:$HOME/.claude/local"
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'

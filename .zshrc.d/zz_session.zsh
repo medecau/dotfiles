@@ -5,6 +5,8 @@ if [[ -z "$SSH_CONNECTION" ]]; then
     export SSH_AUTH_SOCK="$HOME/.ssh/agent.sock"
 else
     # we're connecting over SSH
+    # Unlock keychain for Claude Code auth (github.com/anthropics/claude-code/issues/5515)
+    security unlock-keychain ~/Library/Keychains/login.keychain-db 2>/dev/null
     # if SSH did not setup the auth sock env var then
     # the agent is not being forwarded
     # in these cases we remind the user of this handicap
