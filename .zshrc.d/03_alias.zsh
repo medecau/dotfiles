@@ -133,9 +133,9 @@ alias claudeconfig="$EDITOR ~/.claude"
 # maintenance
 alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade && brew cleanup'
 alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
-alias pipxup='pipx upgrade-all'
+alias uvpyup='uv python upgrade'
 alias uvtoolup='uv tool upgrade --all'
-alias upall='macosup && brewup && uvtoolup && pipxup'
+alias upall='macosup && brewup && uvpyup && uvtoolup'
 
 # other
 alias fix-ms-team='pkill -9 "Microsoft Teams" && sleep 5 && rm -Irf ~/Library/Application\ Support/Microsoft/Teams && open -n /Applications/Microsoft\ Teams.app'

@@ -67,6 +67,7 @@ export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$PATH:$HOME/.docker/bin"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
