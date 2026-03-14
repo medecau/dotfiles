@@ -1,5 +1,3 @@
-tap "homebrew/bundle"
-
 # libs
 ## compression
 brew "brotli"
@@ -69,14 +67,13 @@ brew "yt-dlp"
 
 cask "1password-cli"
 cask "anki"
-cask "docker"
+cask "docker-desktop"
 cask "firefox"
 cask "hex-fiend"
 cask "font-jetbrains-mono-nerd-font"
-cask "font-open-dyslexic-nerd-font"
+cask "font-opendyslexic-nerd-font"
 cask "ghostty"
 cask "keka"
-cask "macfuse"
 cask "netnewswire"
 cask "sublime-merge"
 cask "sublime-text"
