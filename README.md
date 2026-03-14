@@ -41,7 +41,15 @@ git --git-dir ~/.git.dfs --work-tree ~ checkout
 
 This may fail if existing files conflict. Back up or remove the conflicting files and retry.
 
-### 6. Source the shell config
+### 6. Switch remote to SSH
+
+The clone uses HTTPS but we need SSH for pushing:
+
+```sh
+git --git-dir ~/.git.dfs --work-tree ~ remote set-url origin git@github.com:medecau/dotfiles.git
+```
+
+### 7. Source the shell config
 
 ```sh
 source ~/.zshrc
@@ -49,7 +57,7 @@ source ~/.zshrc
 
 This loads everything under `~/.zshrc.d/` and starts tmux.
 
-### 7. Install packages
+### 8. Install packages
 
 ```sh
 brew bundle --file=~/Brewfile
