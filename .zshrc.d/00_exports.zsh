@@ -66,7 +66,7 @@ export CFLAGS="$CFLAGS -falign-functions=8" # OpenBLAS
 export JAVA_HOME="$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home"
 export PATH="$JAVA_HOME/bin:$PATH"
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
 export PATH="$PATH:$HOME/.docker/bin"
 
 # Preferred editor for local and remote sessions

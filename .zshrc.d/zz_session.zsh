@@ -6,7 +6,8 @@ if [[ -z "$SSH_CONNECTION" ]]; then
 else
     # we're connecting over SSH
     # Unlock keychain for Claude Code auth (github.com/anthropics/claude-code/issues/5515)
-    security unlock-keychain ~/Library/Keychains/login.keychain-db 2>/dev/null
+    # Guard: only prompt when stdin is a TTY; non-interactive SSH skips cleanly.
+    [[ -t 0 ]] && security unlock-keychain ~/Library/Keychains/login.keychain-db 2>/dev/null
     # if SSH did not setup the auth sock env var then
     # the agent is not being forwarded
     # in these cases we remind the user of this handicap

@@ -34,6 +34,7 @@ brew "tmux"
 brew "zsh"
 
 ## helpers
+brew "coreutils"
 brew "direnv"
 brew "git-lfs"
 brew "rsync"

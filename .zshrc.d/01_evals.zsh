@@ -2,9 +2,9 @@ autoload -Uz compinit
 compinit
 
 # llm cli tool auto completion
-eval "$(_LLM_COMPLETE=zsh_source llm)"
+# eval "$(_LLM_COMPLETE=zsh_source llm)"
 
-eval "$(invoke --print-completion-script=zsh)"
+# eval "$(invoke --print-completion-script=zsh)"
 
 eval "$(direnv hook zsh)"
 

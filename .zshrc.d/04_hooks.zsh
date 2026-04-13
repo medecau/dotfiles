@@ -8,17 +8,6 @@ function chpwd() {
     echo "$fg[cyan]+ $PWD $reset_color"
 
     # display a report about the state of the directory
-    if [ -d '.git' ]; then
-        # reset colors and leave a blank line
-        echo "$reset_color"
-
-        # uncommitted changes
-        git status --short
-
-        # last commit
-        echo "$fg[cyan]$(git log -1 --pretty=format:'%h %s')"
-    fi
-
     # Makefile
     if [ -f 'Makefile' ]; then
         # reset colors and leave a blank line

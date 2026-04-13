@@ -24,14 +24,13 @@ alias inv='invoke --config=.tasks.yaml'
 # basic
 alias help='man -P cat'
 
-alias ls='ls -GFh' # with colors and symbols, human file sizes, and reverse sorted by time
+alias ls='ls -GFh'
 alias la='ls -A1'  # list with hidden files
 alias ll='ls -Al'  # list with more info - Long
 
 # Makefile
 alias run='make run'
 alias clean='make clean'
-alias test='make test'
 alias dry='make -n'
 alias targets="grep '^[^#[:space:]\.].*:' Makefile"
 
@@ -95,7 +94,6 @@ alias lovr="/Applications/lovr.app/Contents/MacOS/lovr"
 
 # SSH
 alias autossh=autossh -o 'ServerAliveInterval 2' -o 'ServerAliveCountMax 2'
-alias s='autossh -M 0'
 alias scp='scp -C' # scp with compression
 
 # Python virtualenv
@@ -132,7 +130,7 @@ alias claudeconfig="$EDITOR ~/.claude"
 
 # maintenance
 alias brewup='brew bundle --file=~/Brewfile --quiet && brew update && brew upgrade && brew cleanup'
-alias macosup='softwareupdate -ia --force && xcodebuild -runFirstLaunch'
+alias macosup='softwareupdate -ia --force'
 alias uvpyup='uv python upgrade'
 alias uvtoolup='uv tool upgrade --all'
 alias upall='macosup && brewup && uvpyup && uvtoolup'
