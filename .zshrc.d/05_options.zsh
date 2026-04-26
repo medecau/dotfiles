@@ -2,13 +2,6 @@
 bindkey '\e[A' history-search-backward
 bindkey '\e[B' history-search-forward
 
-# Auto-escape URL metacharacters when typing or pasting.
-# Without this, `vget https://yt.com/watch?v=x&t=10` is mangled by the
-# parser (`&` backgrounds, `?` globs) before yt-dlp ever sees it.
-autoload -Uz url-quote-magic bracketed-paste-magic
-zle -N self-insert url-quote-magic
-zle -N bracketed-paste bracketed-paste-magic
-
 setopt extendedhistory
 setopt inc_append_history_time
 setopt sharehistory

@@ -53,6 +53,8 @@ alias rg='rg \
     --colors=line:fg:121 \
     --colors=path:fg:183'
 
+alias code='zed'
+alias writer='open -a "iA Writer"'
 alias cl='claude'
 
 alias myip='hget https://icanhazip.com'
