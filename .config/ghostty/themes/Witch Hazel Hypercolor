@@ -1,5 +1,5 @@
 # Generated from palette.toml + tools/mappings/ghostty.toml — do not edit by hand.
-# Witch Hazel Hypercolor — https://github.com/theacodes/witchhazel
+# Witch Hazel Hypercolor — https://github.com/medecau/witchhazel-fork
 
 # The basic colors
 foreground           = #F8F8F2
