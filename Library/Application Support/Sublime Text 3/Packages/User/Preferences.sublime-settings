@@ -1,6 +1,5 @@
 {
-	"color_scheme": "Monokai.sublime-color-scheme",
-	"font_size": 14,
+	"color_scheme": "Packages/User/witchhazelhypercolor.tmTheme",
 	"theme": "Adaptive.sublime-theme",
 	"ignored_packages":
 	[
