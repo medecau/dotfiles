@@ -1,0 +1,30 @@
+# Generated from palette.toml + tools/mappings/ghostty.toml — do not edit by hand.
+# Witch Hazel Hypercolor — https://github.com/theacodes/witchhazel
+
+# The basic colors
+foreground           = #F8F8F2
+background           = #282634
+selection-foreground = #F8F8F0
+selection-background = #121218
+
+# Cursor
+cursor-color = #F8F8F0
+cursor-text  = #282634
+
+# The 16 terminal colors (Ghostty palette = N=#RRGGBB)
+palette = 0=#1e0010
+palette = 1=#DC7070
+palette = 2=#81FFBE
+palette = 3=#FFF9A3
+palette = 4=#1Bc5E0
+palette = 5=#FFB8D1
+palette = 6=#81FFBE
+palette = 7=#DCC8FF
+palette = 8=#3B364E
+palette = 9=#DC7070
+palette = 10=#81FFBE
+palette = 11=#FFF9A3
+palette = 12=#1Bc5E0
+palette = 13=#FFB8D1
+palette = 14=#81FFBE
+palette = 15=#BFBFBF
