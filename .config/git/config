@@ -157,6 +157,10 @@
 [includeIf "hasconfig:remote.*.url:git@github.com:medecau/**"]
     path = ~/.config/git/config.mine
 
+# raisesquad repos under personal account
+[includeIf "hasconfig:remote.*.url:git@github.com:raisesquad/**"]
+    path = ~/.config/git/config.raisesquad
+
 # work repos go in hidden
 [include]
     path = ~/.config/git/config.hidden
