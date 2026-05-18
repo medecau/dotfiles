@@ -1,9 +1,0 @@
-{
-	"color_scheme": "Packages/User/witchhazelhypercolor.tmTheme",
-	"theme": "Adaptive.sublime-theme",
-	"ignored_packages":
-	[
-		"Vintage",
-	],
-	"index_files": false,
-}

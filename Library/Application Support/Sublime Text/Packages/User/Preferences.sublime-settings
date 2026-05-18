@@ -1,0 +1,19 @@
+{
+	"color_scheme": "Packages/User/witchhazelhypercolor.tmTheme",
+	"theme": "Adaptive.sublime-theme",
+	"ignored_packages":
+	[
+		"Vintage",
+	],
+	"index_files": false,
+
+	// LSP format-on-save (applies only to languages with an active LSP server)
+	"lsp_format_on_save": true,
+	"lsp_code_actions_on_save": {
+		"source.fixAll.ruff": true,
+		"source.organizeImports.ruff": true,
+	},
+
+	"ensure_newline_at_eof_on_save": true,
+	"trim_trailing_white_space_on_save": "all",
+}

@@ -1,18 +1,24 @@
 {
+	"show_diagnostics_panel_on_save": 0,
+	"document_highlight_style": "underline",
+
 	"clients": {
 		"pyright": {
+			"enabled": true,
 			"settings": {
 				// Auto-detect virtual environments in project folder
 				"python.venvPath": "${folder}",
-				// Enable auto-search for Python paths
 				"python.analysis.autoSearchPaths": true,
-				// Use library code for better type hints
 				"python.analysis.useLibraryCodeForTypes": true,
-				// Suppress common warnings
 				"python.analysis.diagnosticSeverityOverrides": {
 					"reportMissingTypeStubs": "none",
 				},
 			},
+		},
+		"ruff": {
+			"enabled": true,
+		},
+		"ty": {
 			"enabled": true,
 		},
 	},
