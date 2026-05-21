@@ -8,7 +8,7 @@ function copy-file-contents() {
 }
 
 function mkdir_and_cd() {
-    mkdir $1
+    mkdir -p $1
     cd $1
 }
 

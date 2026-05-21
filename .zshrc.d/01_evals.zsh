@@ -1,6 +1,3 @@
-autoload -Uz compinit
-compinit
-
 # llm cli tool auto completion
 # eval "$(_LLM_COMPLETE=zsh_source llm)"
 
