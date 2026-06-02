@@ -1,0 +1,25 @@
+{
+	// basedpyright is the sole "smart" server: completions, hover, go-to-def,
+	// signature help, semantic highlighting, type diagnostics, and inlay hints
+	// (variable types, function return types, call-arg names, generics — all on
+	// by default in the package). ruff handles lint + format separately.
+	//
+	// This is the file the LSP-basedpyright helper package actually reads
+	// (Packages/User/<package-name>.sublime-settings).
+	"settings": {
+		// basedpyright defaults to the stricter "recommended" (adds reportAny,
+		// reportUnknownMemberType, reportMissingParameterType, ... — noisy on
+		// partially-typed, hand-written code). Pin to "standard" to match the
+		// previous pyright setup. Raise to "recommended"/"strict"/"all" for more.
+		"basedpyright.analysis.typeCheckingMode": "standard",
+
+		// Don't flag third-party packages that ship without type stubs.
+		"basedpyright.analysis.diagnosticSeverityOverrides": {
+			"reportMissingTypeStubs": "none"
+		},
+
+		// Let ruff own import sorting (source.organizeImports.ruff runs on save);
+		// avoids basedpyright and ruff both reordering imports.
+		"basedpyright.disableOrganizeImports": true
+	}
+}

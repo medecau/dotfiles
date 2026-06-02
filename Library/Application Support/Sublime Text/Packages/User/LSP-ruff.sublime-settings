@@ -1,0 +1,11 @@
+{
+	// Make each project's own Ruff config authoritative. With "filesystemFirst",
+	// a project's pyproject.toml [tool.ruff] / ruff.toml always wins over editor
+	// defaults, so the editor's lint warnings and formatting match `ruff` run on
+	// the command line. (The default, "editorFirst", lets editor settings outrank
+	// the project file — which can silently diverge from per-project select/ignore
+	// /line-length.)
+	"initialization_options": {
+		"settings.configurationPreference": "filesystemFirst"
+	}
+}

@@ -1,25 +1,8 @@
 {
+	// Per-server config lives in Packages/User/LSP-<name>.sublime-settings
+	// (e.g. LSP-basedpyright.sublime-settings). A "clients" block here only
+	// works for generic, non-helper servers — for helper packages it's inert,
+	// since they register under their own package name.
 	"show_diagnostics_panel_on_save": 0,
 	"document_highlight_style": "underline",
-
-	"clients": {
-		"pyright": {
-			"enabled": true,
-			"settings": {
-				// Auto-detect virtual environments in project folder
-				"python.venvPath": "${folder}",
-				"python.analysis.autoSearchPaths": true,
-				"python.analysis.useLibraryCodeForTypes": true,
-				"python.analysis.diagnosticSeverityOverrides": {
-					"reportMissingTypeStubs": "none",
-				},
-			},
-		},
-		"ruff": {
-			"enabled": true,
-		},
-		"ty": {
-			"enabled": true,
-		},
-	},
 }
