@@ -42,8 +42,8 @@
 
 [status]
     branch = true
-    short = true
-    showStash = no
+    aheadBehind = true
+    compareBranches = @{upstream} @{push}
 
 [branch]
     sort = -committerdate
