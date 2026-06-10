@@ -5,7 +5,7 @@
 	[
 		"Vintage",
 	],
-	"index_files": false,
+	"index_files": true,
 
 	// LSP format-on-save (applies only to languages with an active LSP server)
 	"lsp_format_on_save": true,
@@ -16,4 +16,7 @@
 
 	"ensure_newline_at_eof_on_save": true,
 	"trim_trailing_white_space_on_save": "all",
+
+	"translate_tabs_to_spaces": true,
+	"detect_indentation": false,
 }
