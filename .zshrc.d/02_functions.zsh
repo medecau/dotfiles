@@ -96,8 +96,8 @@ function dfstoggle() {
 
 # good for testing shell startup time
 function timezsh() {
+    shell=${1-$SHELL}
     for i in $(seq 1 10); do
-        shell=${1-$SHELL}
         /usr/bin/time $shell -i -c exit
     done
 }

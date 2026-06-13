@@ -74,7 +74,7 @@ export PATH="$PATH:$HOME/.docker/bin"
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 else
-    export EDITOR="'/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' --wait"
+    export EDITOR='/opt/homebrew/bin/subl --wait'
 fi
 
 # local stuff usefull for self on mac
